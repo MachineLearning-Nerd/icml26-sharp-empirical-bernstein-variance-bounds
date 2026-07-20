@@ -1,7 +1,7 @@
 # Status
 
-Current step: complete three-claim publication gate passed; GitHub handoff and
-canonical shared-publication queue are next.
+Current step: full three-claim publication gate passed, public GitHub evidence
+is pushed, and canonical shared-publication queue handoff is complete.
 
 The arXiv v2 source archive and the author implementation are pinned locally.
 The primary TeX directly anchors the live contract to the main confidence
@@ -58,5 +58,8 @@ smaller than Maurer-Pontil in every released cell (mean width ratios .3360,
 The released decoupled comparator retains non-finite values in 36.96%, 38.90%,
 and 47.22% of its output entries, which is reported rather than filtered.
 
-Next: push the complete public GitHub evidence repository, atomically enqueue
-it for the shared HF publisher, then select the next eligible high-value paper.
+Public GitHub: MachineLearning-Nerd/icml26-repro-oqkiE71wrC-empirical-bernstein-variance
+at commit 424f83b0a9b949efd5af13dbc94fb9be3829364c. Canonical queue entry 72
+(zero-indexed) is owned by the shared drain; this session must not directly
+publish the HF Space. Next: wait for shared-drain Space readback, then select
+the next eligible high-value paper.
