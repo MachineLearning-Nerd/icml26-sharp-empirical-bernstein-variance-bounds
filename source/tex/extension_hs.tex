@@ -1,0 +1,142 @@
+
+
+\section{Extension to Hilbert spaces} \label{section:extension_hs}
+
+%\subsection{An extension to Hilbert spaces} \label{section:hs}
+
+Our inequalities naturally extend to separable Hilbert spaces. In these more abstract spaces, we shall assume that our random variables lie in a ball of diameter $1$, instead of a unit long interval. Similarly, the concept of variance involves norms, instead of just squares of scalars. 
+\begin{assumption} \label{ass:hs_assumption}
+    The stream of random variables $X_1, X_2, \ldots$ belongs to a separable Hilbert space $H$, and is such that
+    \begin{align*}
+        \| X_t \| \in \lb 0,\frac{1}{2} \rb, \quad \E_{t-1} X_t = \mu, \quad \E_{t-1} \| X_t - \mu \|^2 = \sigma^2.
+    \end{align*}
+\end{assumption}
+Under Assumption~\ref{ass:hs_assumption}, all the concentration inequalities for $\sigma^2$ previously presented for the one dimensional case still hold if replacing  $(X_i - \bar\mu_i)^2$ and $(X_i - \widehat\mu_i)^2$ by $\|X_i - \bar\mu_i\|^2$ and $\|X_i - \widehat\mu_i\|^2$, respectively. 
+
+
+The main technical obstacle of this extension is the generalization of Theorem~\ref{theorem:bennett_anytimevalid} to multivariate settings, which we formalize next. Contrary to its one-dimensional counterpart, its proof builds on more sophisticated techniques from \citet{pinelis1994optimum}; we defer such a proof to
+Appendix~\ref{proof:vectorvalued_bennett_anytimevalid}. %Its proof is deferred to Appendix~\ref{proof:vectorvalued_bennett_anytimevalid}, and relies on techniques from \citet{pinelis1994optimum}.
+
+\begin{theorem} [Vector-valued anytime valid Bennett's inequality] \label{theorem:vectorvalued_bennett_anytimevalid}
+    Let $X_1, X_2, \ldots$ be a stream of random variables belonging to a separable Hilbert space $H$ such that $\| X_t \| \leq \frac{1}{2}$, $\E_{t-1}X_t = \mu$, and $\E_{t-1} \| X_t-\mu\|^2 = \sigma^2$, for all $t \geq 1$. For any $\R_+$-valued predictable sequence $(\tilde\lambda_i)_{i \geq 1}$, the sequence of sets of $x$ such that
+     \begin{align*}
+         \ldba x - \frac{\sum_{i \leq t} \tilde \lambda_i X_i}{\sum_{i \leq t} \tilde \lambda_i}\rdba  \leq \frac{\log(2/\delta) + \sigma^2\sum_{i \leq t} \psi_P(\tilde \lambda_i)}{\sum_{i \leq t} \tilde \lambda_i} 
+     \end{align*}
+     is a $1-\delta$ confidence sequence for $\mu$.
+\end{theorem}
+
+
+The remainder of the one-dimensional results can be extended with relative ease, and so we emphasize once again that the concentration inequalities previously introduced still hold in Hilbert spaces.  We highlight that the inequalities are also sharp in this vector-valued setting, with the analysis conducted in Section~\ref{section:analysis_widths} naturally extending to Hilbert spaces. %We defer the formal presentation of such extensions to Appendix~\ref{section:extension_hs}.
+
+
+
+\subsection{Formalization of auxiliary results}
+
+Throughout, let $H$ be a separable Hilbert space and denote 
+\begin{align*}
+    B_r(x) = \lc y\in H : \|y-r\| \leq r \rc.
+\end{align*}
+We remind the reader that the theoretical foundation of the results from Section~\ref{section:main_results} are namely the scalar-valued anytime valid Bennett's inequality (Theorem~\ref{theorem:bennett_anytimevalid}) and the supermartingale construction from Theorem~\ref{theorem:main_supermartingale_theorem}. Theorem~\ref{theorem:vectorvalued_bennett_anytimevalid} extended the former to the multivariate setting.
+%We start by extending Theorem~\ref{theorem:bennett_anytimevalid} to separable Hilbert spaces. Contrary to its one-dimensional counterpart, its proof builds on more sophisticated techniques from \citet{pinelis1994optimum}; we defer such a proof to
+% Appendix~\ref{proof:vectorvalued_bennett_anytimevalid}.
+% \begin{theorem} [Vector-valued anytime valid Bennett's inequality] \label{theorem:vectorvalued_bennett_anytimevalid}
+%     Let $X_1, X_2, \ldots$ be a stream of random variables belonging to a separable Hilbert space $H$ such that $\| X_t \| \leq \frac{1}{2}$, $\E_{t-1}X_t = \mu$, and $\E_{t-1} \| X_t-\mu\|^2 = \sigma^2$, for all $t \geq 1$. For any $\R_+$-valued predictable sequence $(\tilde\lambda_i)_{i \geq 1}$, the sequence of sets
+%      \begin{align*}
+%          \lc x \in H: \ldba x - \frac{\sum_{i \leq t} \tilde \lambda_i X_i}{\sum_{i \leq t} \tilde \lambda_i}\rdba  \leq \frac{\log(2/\delta) + \sigma^2\sum_{i \leq t} \psi_P(\tilde \lambda_i)}{\sum_{i \leq t} \tilde \lambda_i}  \rc
+%      \end{align*}
+%      is a $1-\delta$ confidence sequence for $\mu$.
+% \end{theorem}
+The remaining foundational piece is the extension of the supermartingale construction from Theorem~\ref{theorem:main_supermartingale_theorem}, which we present next\footnote{Throughout, we emphasize the fact that the estimator of the mean belongs to the Hilbert space (in contrary to the estimator of the variance, which still belongs to the real line) by means of the notation $\widehat\mu_i^{\text{HS}}$.} and whose proof we defer to 
+Appendix~\ref{proof:main_supermartingale_theorem_HS}.
+\begin{theorem} \label{theorem:main_supermartingale_theorem_HS}
+    Let Assumption~\ref{ass:hs_assumption} hold. For any $B_{\frac{1}{2}}(0)$-valued predictable sequence $(\widehat\mu_i^{\text{HS}})_{i \geq 1}$, define
+    \begin{align*}
+        \tilde\sigma_i^2 = \sigma^2 + \ldba\widehat\mu_i^{\text{HS}} - \mu\rdba^2.
+    \end{align*}
+    For any $[0, 1]$-valued predictable sequence  $(\widehat\sigma_i)_{i \geq 1}$ and any $[0, 1)$-valued predictable sequence  $(\lambda_i)_{i \geq 1}$, the processes
+    \begin{align*}
+        S_t^{\pm, \text{HS}} = \exp \lc \sum_{i_\leq t} \lambda_i \lb \pm \ldba X_i - \widehat\mu_i^{\text{HS}}\rdba^2 \mp \tilde\sigma_i^2  \rb - \psi_E(\lambda_i) \lb \ldba X_i - \widehat\mu_i^{\text{HS}}\rdba^2 - \widehat \sigma_i^2 \rb^2 \rc
+    \end{align*}
+    for $t \geq 1$ and $S_0^{\pm, \text{HS}} = 1$,
+    are nonnegative supermartingales.
+\end{theorem}
+
+
+This theorem implies that the upper and lower inequalities previously derived for one dimensional processes equally apply to Hilbert spaces. Denoting
+\begin{align*}
+    R_{t, \alpha}^{\text{HS}} &:= \frac{\log(1/\alpha) + \sum_{i \leq t}\psi_E(\lambda_i) \lp \ldba X_i - \widehat\mu_i^{\text{HS}}\rdba^2 - \widehat \sigma_i^2 \rp^2}{\sum_{i \leq t} \lambda_i},
+    \\ D_t^{\text{HS}} &:= \frac{\sum_{i \leq t}\ldba \lambda_i X_i - \widehat\mu_i^{\text{HS}}\rdba^2}{\sum_{i \leq t} \lambda_i}, \quad E_t^{\text{HS}} :=  \frac{\sum_{i \leq t} \lambda_i \ldba \widehat\mu_i^{\text{HS}} - \mu\rdba^2}{\sum_{i \leq t} \lambda_i},
+\end{align*}
+the following corollary is a direct consequence of Theorem~\ref{theorem:main_supermartingale_theorem_HS}, whose proof is analogous to that of Corollary~\ref{corollary:main_corollary}.
+\begin{corollary} \label{corollary:main_corollary_hs}
+    Let Assumption~\ref{ass:main_assumption} hold.  For any $[0, 1)$-valued predictable sequence $(\lambda_i)_{i \geq 1}$, any $B_{\frac{1}{2}}(0)$-valued predictable sequence $(\widehat\mu_i^{\text{HS}})_{i \geq 1}$, and any $[0, 1]$-valued predictable sequence $(\widehat\sigma_i)_{i \geq 1}$, the sequence of sets
+    \begin{align*}
+    \lp D_t^{\text{HS}} -  E_t^{\text{HS}} \pm R_{t, \frac{\alpha}{2}}^{\text{HS}}\rp
+\end{align*}
+is a $1-\alpha$ confidence sequence for $\sigma^2$.
+\end{corollary}
+
+From Corollary~\ref{corollary:main_corollary_hs}, upper and lower inequalities for the variance can be derived analogously to those presented in Section~\ref{section:main_results}. That is, in order to derive an upper inequalities for the variance, it suffices to ignore the term $E_t^{\text{HS}}$.
+
+\begin{corollary} [Vector-valued upper empirical Bernstein for the variance]
+    Let Assumption~\ref{ass:main_assumption} hold.  For any $B_{\frac{1}{2}}(0)$-valued predictable sequence $(\widehat\mu_i^{\text{HS}})_{i \geq 1}$, any $[0, 1]$-valued predictable sequence $(\widehat\sigma_i)_{i \geq 1}$, and any $[0, 1)$-valued predictable sequence $(\lambda_i)_{i \geq 1}$, it holds that $\lp -\infty, U_t^{\text{HS}}\rp$ is a $1-\alpha$ upper confidence sequence for $\sigma^2$, where
+    \begin{align*}
+    U_t^{\text{HS}} := D_t^{\text{HS}}+ R_{t, \alpha}^{\text{HS}}.
+    \end{align*}
+\end{corollary}
+
+In order to derive $\tilde R_{i, \delta}$ such that  $\ldba \widehat\mu_i - \mu\rdba \leq \tilde R_{i, \delta}$ for all $i \geq 1$, we propose to use the vector-valued anytime valid Bennett's inequality from Theorem~\ref{theorem:vectorvalued_bennett_anytimevalid}. That is, take 
+\begin{align} \label{eq:widehat_mu_definition_hs}
+    \widehat\mu_t^{\text{HS}} = \frac{\sum_{i=1}^{t-1} \tilde \lambda_i X_i}{\sum_{i=1}^{t-1} \tilde \lambda_i}, \quad \tilde R_{t, \delta} = \frac{\log(2/\delta) + \sigma^2\sum_{i=1}^{t-1} \psi_P(\tilde \lambda_i)}{\sum_{i=1}^{t-1} \tilde \lambda_i}.
+\end{align}
+These choices of $\widehat\mu_t^{\text{HS}}$ and $\tilde R_{t, \delta}$ lead to the same exact definition of $\tilde A_{t}$, $\tilde B_{t, \delta}$, $\tilde C_{t, \delta}$, $A_{t}$, $B_{t, \delta}$, and $C_{t, \delta}$ from Section~\ref{section:main_results}. The following corollary follows analogously to its one-dimensional counterpart.
+\begin{corollary} [Vector-valued lower empirical Bernstein for the variance] \label{corollary:lower_bound_hs}
+    Let Assumption~\ref{ass:main_assumption} hold. For the $B_{\frac{1}{2}}(0)$-valued predictable sequence $(\widehat\mu_i^{\text{HS}})_{i \geq 1}$ defined in \eqref{eq:widehat_mu_definition}, any $[0, 1]$-valued predictable sequence $(\widehat\sigma_i^2)_{i \geq 1}$, any $[0, 1)$-valued predictable sequence $(\lambda_i)_{i \geq 1}$, and any $[0, \infty)$-valued predictable sequence $(\tilde\lambda_i)_{i \geq 1}$, it holds that $\lp L_t^{\text{HS}}, \infty\rp$ is a $1-\alpha$ lower confidence sequence for $\sigma^2$, 
+    where $\alpha_1 + \alpha_2 = \alpha$ and
+    \begin{align*}
+        L_t^{\text{HS}} := \frac{-B_{t, \alpha_1} + \sqrt{B_{t, \alpha_1}^2 + 4A_t(D_t^{\text{HS}} - C_{t, \alpha_1} - R_{t, \alpha_2}^{\text{HS}})}}{2A_t}.
+    \end{align*}
+\end{corollary}
+
+We propose to take the plug-ins $(\lambda_i)_{i \geq 1}$ and $(\tilde\lambda_i)_{i \geq 1}$ analogously to Section~\ref{section:main_results}. These choices require that the definitions of $\widehat m_{4, t}^{2}$ and $\widehat\sigma_t^2$ from Section~\ref{section:main_results} naturally replace the squares by the squares of the norms. Similarly to Section~\ref{section:main_results}, the choice of the split of $\alpha$ into $\alpha_1$ and $\alpha_2$ is also of importance. In practice, we propose to take $\alpha_1$ and $\alpha_2$ analogously to Section~\ref{section:main_results}.
+The optimality of the results from Section~\ref{section:analysis_widths} for specific choices of $\alpha_1$ and $\alpha_2$ extends analogously to Hilbert spaces. However, Assumption~\ref{assumption:optimal_widths} ought to be replaced by the following assumption. 
+
+\begin{assumption} \label{assumption:optimal_widths_hs}
+ $X_1, X_2, \ldots$ is such that $\V_{i-1} \lb \| X_i-\mu\|^2 \rb$ is constant across $i$.
+\end{assumption}
+
+Under Assumption~\ref{ass:hs_assumption} and Assumption~\ref{assumption:optimal_widths_hs}, the first order term of the width of the confidence intervals can be compared with that from the oracle Bernstein-type inequality, i.e., $$\sqrt{2 \V \lb \|X_i-\mu\|^2\rb \log (1 / \alpha)}.$$
+The following corollary establishes that the first order width of the confidence intervals does indeed match this oracle benchmark. Its proof is not provided given that it is completely analogous to that of Section~\ref{section:analysis_widths}. 
+
+\begin{corollary} [Sharpness]
+Let Assumption \ref{ass:hs_assumption} and Assumption \ref{assumption:optimal_widths_hs} hold. If $\alpha = \alpha_{1, n} + \alpha_{2, n}$ as defined in \eqref{eq:final_def_alphas}, then
+\begin{align*}
+    &\sqrt{n} (U_n^{\text{HS}}  - D_n^{\text{HS}} ) \stackrel{a.s.}{\to} \sqrt{2 \V \lb \|X_i-\mu\|^2\rb \log (1 / \alpha)}, 
+    \\ &\sqrt{n} (D_n^{\text{HS}}  - L_n^{\text{HS}} ) \stackrel{a.s.}{\to} \sqrt{2 \V \lb \|X_i-\mu\|^2\rb \log (1 / \alpha)}.
+\end{align*}
+\end{corollary}
+
+
+
+
+
+% \section{Analysis of the widths for the standard deviation} \label{section:analysis_widths_std}
+
+
+% We devote this section to showing that the confidence intervals for the std also achieve $1/\sqrt{n}$ rates. To see this, let $(L_n, U_n)$ be the confidence interval for the variance obtained in Section~\ref{section:main_results}. We showed in Section~\ref{section:analysis_widths} that, for big $n$,
+% \begin{align*}
+%     L_n \approx \sigma^2 - 2\sqrt{\frac{c \V \lb (X_i-\mu)^2\rb}{n}}, \quad U_n \approx \sigma^2 + 2\sqrt{\frac{c \V \lb (X_i-\mu)^2\rb}{n}}
+% \end{align*}
+% with $c = \frac{\log (1 / \alpha)}{2}$. At first glance, it could seem like $\sqrt{L_n}$ and $\sqrt{U_n}$ approach $\sigma$ at $n^{-1/4}$ rates, instead of $n^{-1/2}$ rates. Nonetheless, let us note that 
+% \begin{align*}
+%     \V \lb (X_i-\mu)^2\rb \leq \E\lb (X_i-\mu)^2\rb - \E^2\lb (X_i-\mu)^2\rb = \sigma^2(1 - \sigma^2) \leq \sigma^2.
+% \end{align*}
+% Thus,
+% \begin{align*}
+%    \sqrt U_n \lessapprox \sqrt{\sigma^2 + 2\sigma\sqrt{\frac{c}{n}}} = \sqrt{\lp\sigma + \sqrt{\frac{c}{n}}\rp^2 - {\frac{c}{n}}} \leq \sigma + \sqrt{\frac{c}{n}},
+% \end{align*}
+% and so $\sqrt U_n$ approaches $\sigma$ at a $n^{-1/2}$ rate. Analogously, $\sqrt L_n$ also approaches $\sigma$ at the same rate.
+
+
+
+

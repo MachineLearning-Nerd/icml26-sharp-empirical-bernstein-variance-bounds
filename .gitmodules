@@ -1,0 +1,3 @@
+[submodule "upstream"]
+	path = upstream
+	url = https://github.com/DMartinezT/emp_bernstein_variance.git

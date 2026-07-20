@@ -1,0 +1,1224 @@
+
+
+
+\section{Auxiliary lemmata} \label{section:auxiliary_lemmas}
+
+\begin{lemma} \label{lemma:psi_p_decoupled}
+For $a \in [0, 1]$ and $b \geq 0$,
+\begin{align*}
+    \psi_P(ab) \leq a^2 \psi_P(b), \quad \psi_E(ab) \leq a^2 \psi_E(b).
+\end{align*}
+\end{lemma}
+
+\begin{proof}
+    It suffices to observe that
+    \begin{align*}
+        \psi_P(ab) = \sum_{k = 2}^\infty \frac{(ab)^k}{k!} \stackrel{(i)}{\leq} a^2 \sum_{k = 2}^\infty \frac{b^k}{k!} = a^2 \psi_P(b),
+    \end{align*}
+    as well as
+    \begin{align*}
+        \psi_E(ab) = \sum_{k = 2}^\infty \frac{(ab)^k}{k} \stackrel{(i)}{\leq} a^2 \sum_{k = 2}^\infty \frac{b^k}{k} = a^2 \psi_E(b),
+    \end{align*}
+    where in both (i) follows from $|a| \leq 1$.
+\end{proof}
+
+\begin{lemma} \label{lemma:psi_E_vs_psiN_increasing}
+Let $\psi_N = \frac{\lambda^2}{2}$ and $\psi_E(\lambda) = -\log(1-\lambda)-\lambda$. The function $\lambda \in [0, 1) \mapsto \frac{\psi_E(\lambda)}{\psi_N(\lambda)}$ is increasing. 
+\end{lemma}
+
+\begin{proof}
+    It suffices to observe that 
+    \begin{align*}
+         \frac{\psi_E(\lambda)}{\psi_N(\lambda)} =  \frac{\sum_{k\geq2} \frac{\lambda^k}{k}}{\frac{\lambda^2}{2}} = 2\sum_{k\geq2} \frac{\lambda^{k-2}}{k},
+    \end{align*}
+    which is clearly increasing on $\lambda$.
+\end{proof}
+
+
+\begin{lemma} \label{lemma:series_one_over_sqrt}
+It holds that
+\begin{align*} 
+    \sum_{i = 1}^n \frac{1}{\sqrt{i}} \in \lb 2\sqrt{n} - 2, 2\sqrt{n} - 1 \rb,
+\end{align*}
+and so 
+\begin{align*}
+    \frac{1}{\sqrt{n}}\sum_{i = 1}^n \frac{1}{\sqrt{i}} \to 2.
+\end{align*}
+\end{lemma}
+
+\begin{proof}
+    Given that $x \mapsto \frac{1}{\sqrt{x}}$ is a decreasing function, it follows that
+    \begin{align*}
+        \int_1^n \frac{1}{\sqrt{x}}dx \leq \sum_{i = 1}^n \frac{1}{\sqrt{i}} \leq  1 + \int_1^n \frac{1}{\sqrt{x}}dx,
+    \end{align*}
+    with $\int_1^n \frac{1}{\sqrt{x}}dx = 2\sqrt{n} - 2$. In order to conclude the proof, it suffices to note that
+    \begin{align*}
+         \frac{1}{\sqrt{n}}\sum_{i = 1}^n \frac{1}{\sqrt{i}} \in \lb 2 - \frac{2}{\sqrt{n}}, 2 - \frac{1}{\sqrt{n}}\rb, \quad 2 - \frac{2}{\sqrt{n}} \to 2, \quad  2 - \frac{1}{\sqrt{n}} \to 2,
+    \end{align*}
+    and invoke the sandwich theorem.
+\end{proof}
+
+
+
+
+\begin{lemma} \label{lemma:series_one_over}
+It holds that
+\begin{align*}
+    \sum_{i = 1}^n \frac{1}{i} \in \lb \log{n}, \log{n}+1 \rb,
+\end{align*}
+and so 
+\begin{align*}
+    \frac{1}{\log{n}}\sum_{i = 1}^n \frac{1}{i} \to 1.
+\end{align*}
+\end{lemma}
+
+\begin{proof}
+    Given that $x \mapsto \frac{1}{x}$ is a decreasing function, it follows that
+    \begin{align*}
+        \int_1^n \frac{1}{x}dx \leq \sum_{i = 1}^n \frac{1}{i} \leq  1 + \int_1^n \frac{1}{x}dx,
+    \end{align*}
+    with $\int_1^n \frac{1}{x}dx = \log n$. In order to conclude the proof, it suffices to note that
+    \begin{align*}
+         \frac{1}{\log{n}}\sum_{i = 1}^n \frac{1}{i} \in \lb 1,  1 + \frac{1}{\log{n}}\rb, \quad 1 + \frac{1}{\log{n}} \to 1,
+    \end{align*}
+    and invoke the sandwich theorem.
+\end{proof}
+
+\begin{lemma} \label{lemma:series_sqrt}
+It holds that
+\begin{align*}
+    \sum_{i = 1}^n \sqrt i \in \lb \frac{1}{3} + \frac{2}{3} 
+ n^{\frac{3}{2}}, -\frac{2}{3} + \frac{2}{3} 
+ (n+1)^{\frac{3}{2}} \rb.
+\end{align*}
+\end{lemma}
+
+\begin{proof}
+    Given that $x \mapsto \sqrt x$ is an increasing function, it follows that
+    \begin{align*}
+        1 + \int_1^n \sqrt{x}dx \leq \sum_{i = 1}^n \sqrt{i} \leq  \int_1^{n+1} \sqrt{x}dx,
+    \end{align*}
+    with $\int_1^n \sqrt{x}dx = \frac{2}{3} 
+ n^{\frac{3}{2}}$. 
+\end{proof}
+
+\begin{lemma} \label{lemma:series_one_over_ilogi}
+It holds that
+\begin{align*}
+    \sum_{i = 2}^\infty \frac{1}{i \log i } = \infty,
+\end{align*}
+and so 
+\begin{align*}
+    \sum_{i = 1}^\infty \frac{1}{i \log (i+1) } = \infty.
+\end{align*}
+\end{lemma}
+
+\begin{proof}
+    Given that $x \mapsto \frac{1}{x \log x}$ is a decreasing function, it follows that
+    \begin{align*}
+         \sum_{i = 2}^{n-1} \frac{1}{i \log i } \geq \int_2^n \frac{1}{x \log x} dx \stackrel{(i)}{=} \int_{\log 2}^{\log n} \frac{1}{u} du,
+    \end{align*}
+    where we have used the change of variable $u = \log x$ in (i). Thus
+    \begin{align*}
+        \sum_{i = 2}^{\infty} \frac{1}{i \log i } = \lim_{n\to\infty}\sum_{i = 2}^{n-1} \frac{1}{i \log i } \geq \lim_{n\to\infty} \int_{\log 2}^{\log n} \frac{1}{u} du = \infty.
+    \end{align*}
+    It remains to note that 
+    \begin{align*}
+        \sum_{i = 1}^\infty \frac{1}{i \log (i+1) } \geq  \sum_{i = 1}^\infty \frac{1}{(i+1) \log (i+1) } =  \sum_{i = 2}^{\infty} \frac{1}{i \log i }.
+    \end{align*}
+\end{proof}
+
+
+\begin{lemma} \label{lemma:sum_ai_over_sum_ai}
+    Let $(a_{n})_{n \geq 0}$ be a deterministic sequence such that $a_0 \geq 2$ and $a_n \in [0,1]$ for $n \geq 1$. Then
+    \begin{align*}
+        \frac{1}{n}\sum_{i = 1}^n \frac{a_i}{\sum_{j \leq i-1} a_{j}} \leq \log \lp \sum_{i = 0}^n a_i\rp
+    \end{align*}
+\end{lemma}
+
+\begin{proof}
+    Denoting $s_i = \sum_{j= 0}^{i} a_j$, it follows that
+    \begin{align*}
+        \frac{1}{n}\sum_{i = 1}^n \frac{a_i}{\sum_{j \leq i-1} a_{j}} &= \frac{1}{n}\sum_{i = 1}^n \frac{s_i - s_{i-1}}{s_{i-1}}.
+    \end{align*}
+    We now note that $\frac{s_i - s_{i-1}}{s_{i-1}}$ is the area of a rectangle with width $s_i - s_{i-1}$ and height $\frac{1}{s_{i-1}}$. Define the function $f(x) := \frac{1}{x-1}$, which is decreasing on $x$ and 
+    \begin{align*}
+        f\lp s_{i}\rp = \frac{1}{s_{i} - 1} \stackrel{(i)}{\geq} \frac{1}{(s_{i-1} + 1) - 1} = \frac{1}{s_{i-1}},
+    \end{align*}
+    where (i) follows from $a_i \in [0,1]$. Thus
+    \begin{align*}
+        \frac{1}{n}\sum_{i = 1}^n \frac{s_i - s_{i-1}}{s_{i-1}} &\leq \int_{s_0}^{s_n} f(x) dx = \int_{s_0}^{s_n} \frac{1}{x-1} dx = \log (s_n - 1) - \log (a_0 - 1) 
+        \\&\stackrel{(i)}{\leq} \log (s_n),
+    \end{align*}
+    where $(i)$ follows from $a_0 \geq 2$, thus concluding the result.
+\end{proof}
+
+
+\begin{lemma} \label{lemma:average_of_converging_sequence}
+    Let $(a_{n})_{n \geq 1}$ be a deterministic sequence such that $a_n \to a$. Then
+    \begin{align*}
+        \frac{1}{n} \sum_{i \leq n}a_{i} \stackrel{n\to\infty}{\to} a.
+    \end{align*}
+    Further, if $a_n \to 0$ and $|b_n|<C$, then
+    \begin{align*}
+        \frac{1}{n} \sum_{i \leq n}a_{i} b_i \stackrel{n\to\infty}{\to} 0.
+    \end{align*}
+\end{lemma}
+
+\begin{proof}
+    Let $\epsilon > 0$. We want to show that there exists $M \in \Nb$ such that 
+    \begin{align*}
+        \lba  a - \frac{1}{n} \sum_{i \leq n}a_{i} \rba \leq \epsilon. 
+    \end{align*}
+    \begin{itemize}
+        \item Given that $a_n \to a$, there exists $M_1 \in \Nb$ such that $|a_n - a| \leq \frac{\epsilon}{2}$ for all $n \geq M_1$.
+        \item Further, there exists $M_2 \in \Nb$ such that $\frac{1}{n}\sum_{i = 1}^{M_1-1} \lba a_i - a \rba \leq \frac{\epsilon}{2}$ for all $n \geq M_2$.
+    \end{itemize}
+    Taking $M = \max \{ M_1, M_2 \}$, it follows that 
+    \begin{align*}
+        \lba  a - \frac{1}{n} \sum_{i \leq n}a_{i} \rba  &\leq \frac{1}{n} \sum_{i \leq n} \lba  a - a_{i} \rba 
+        \\&= \frac{1}{n} \sum_{i =1}^{M_1-1} \lba  a - a_{i} \rba +  \frac{1}{n} \sum_{i =M_1}^{n} \lba  a - a_{i} \rba 
+        \\&\leq \frac{\epsilon}{2} + \frac{1}{n} \sum_{i =M_1}^{n} \frac{\epsilon}{2}
+        \leq \frac{\epsilon}{2} + \frac{1}{n} \sum_{i =1}^{n} \frac{\epsilon}{2}
+        = \epsilon,
+    \end{align*}
+    thus concluding the first result.
+
+    The second result trivially follows after observing 
+    \begin{align*}
+        \lba \frac{1}{n} \sum_{i \leq n}a_{i} b_i \rba  \leq  C\frac{1}{n} \sum_{i \leq n} \lba a_{i} \rba,
+    \end{align*}
+    and the right hand side converges to $0$ in view of the first result.
+\end{proof}
+
+
+\begin{lemma} \label{lemma:aibiab}
+    Let $(a_n)_{n \geq 1}$ and $(b_n)_{n \geq 1}$ be two deterministic sequences such that 
+    \begin{align*}
+        a_n \stackrel{n\to\infty}{\to} a, \quad b_i \geq 0, \quad \frac{1}{n}\sum_{i=1}^n b_i \stackrel{n\to\infty}{\to} b.
+    \end{align*}
+    Then,
+    \begin{align*}
+         \frac{1}{n}\sum_{i=1}^n a_i b_i \stackrel{n\to\infty}{\to} ab.
+    \end{align*}
+\end{lemma}
+
+\begin{proof}
+    Let $\epsilon \in (0, 1)$ be arbitrary. It suffices to show that there exists $M\in\Nb$ such that 
+    \begin{align*}
+        \lba  \frac{1}{n}\sum_{i=1}^n a_i b_i - ab\rba \leq \epsilon 
+    \end{align*}
+    for all $n \geq M$.
+    Given that $a_n \to a$, there exists $M_1 \in \Nb$ such that $\sup_{i \geq M_1} |a_i - a| \leq \frac{\epsilon}{3 (b+1)}$. Furthermore, $\frac{1}{n}\sum_{i=1}^n b_i \to b$ implies the existence of $M_2\in\Nb$ such that
+    \begin{align*}
+        \lba \frac{1}{n}\sum_{i=1}^n b_i - b \rba \leq \frac{\epsilon}{3 (|a| + 1)}.
+    \end{align*}
+    Lastly, there exists $M_3 \in\Nb$ such that
+    \begin{align*}
+         \frac{1}{n}\sup_{i \leq M'-1}\lba a_i - a \rba \sum_{i=1}^{M'-1} b_i \leq \frac{\epsilon}{3},
+    \end{align*}
+    where $M' = M_1 \vee M_2$. Taking $M = M'\vee M_3$, it follows that
+    \begin{align*}
+        \lba  \frac{1}{n}\sum_{i=1}^n a_i b_i - ab\rba &= \lba  \frac{1}{n}\sum_{i=1}^n a_i b_i - ab_i + ab_i - ab\rba
+        \\&\leq   \frac{1}{n}\sup_{i \leq n}\lba a_i - a \rba \sum_{i=1}^n b_i + |a| \lba\frac{1}{n}\sum_{i=1}^n  b_i - b\rba
+        \\&\leq   \frac{1}{n}\sup_{i \leq n}\lba a_i -a\rba \sum_{i=1}^n b_i + |a| \frac{\epsilon}{3 (|a| + 1)}
+        \\&\leq   \frac{1}{n}\sup_{i \leq M'-1}\lba a_i -a\rba \sum_{i=1}^{M'-1} b_i+\frac{1}{n}\sup_{M' \leq i \leq n}\lba a_i \rba \sum_{i=M'}^{n} b_i + \frac{\epsilon}{3}
+        \\&\leq   \frac{\epsilon}{3} +\sup_{i \geq M'}\lba a_i-a \rba \frac{1}{n} \sum_{i=1}^{n} b_i + \frac{\epsilon}{3}
+        \\&\leq   \frac{\epsilon}{3} +\frac{\epsilon}{3 (b+1)} \lp \frac{\epsilon}{3 (|a| + 1)} + b\rp  + \frac{\epsilon}{3}
+        \leq   \frac{\epsilon}{3} +\frac{\epsilon}{3}  + \frac{\epsilon}{3}
+        = \epsilon.
+    \end{align*}
+\end{proof}
+
+
+\begin{lemma} \label{lemma:anibiab}
+    Let $(a_{n, i})_{n \geq 1, i \in[n]}$ and $(b_n)_{n \geq 1}$ be two deterministic sequences such that 
+    \begin{align*}
+        a_{n, n} \stackrel{n\to\infty}{\to} a, \quad |a_{n, i} - a| \leq |a_{i, i} - a|, \quad b_i \geq 0, \quad \frac{1}{n}\sum_{i=1}^n b_i \stackrel{n\to\infty}{\to} b.
+    \end{align*}
+    Then
+    \begin{align*}
+         \frac{1}{n}\sum_{i=1}^n a_{n, i} b_i \stackrel{n\to\infty}{\to} ab.
+    \end{align*}
+\end{lemma}
+
+\begin{proof}
+    Let $\epsilon \in (0, 1)$ be arbitrary. It suffices to show that there exists $M\in\Nb$ such that 
+    \begin{align*}
+        \lba  \frac{1}{n}\sum_{i=1}^n a_{n, i} b_i - ab\rba \leq \epsilon 
+    \end{align*}
+    for all $n \geq M$.
+    Given that $a_{n, n} \to a$, there exists $M_1 \in \Nb$ such that $\sup_{i \geq M_1} |a_{i, i}- a| \leq \frac{\epsilon}{3 (b+1)}$. Furthermore, $\frac{1}{n}\sum_{i=1}^n b_i \to b$ implies the existence of $M_2\in\Nb$ such that
+    \begin{align*}
+        \lba \frac{1}{n}\sum_{i=1}^n b_i - b \rba \leq \frac{\epsilon}{3 (|a| + 1)}.
+    \end{align*}
+    Lastly, there exists $M_3 \in\Nb$ such that
+    \begin{align*}
+         \frac{1}{n}\sup_{i \leq M'-1}\lba a_{i, i} - a \rba \sum_{i=1}^{M'-1} b_i \leq \frac{\epsilon}{3},
+    \end{align*}
+    where $M' = M_1 \vee M_2$. Taking $M = M'\vee M_3$, it follows that
+    \begin{align*}
+        \lba  \frac{1}{n}\sum_{i=1}^n a_{n, i} b_i - ab\rba &= \lba  \frac{1}{n}\sum_{i=1}^n a_{n, i} b_i - ab_i + ab_i - ab\rba
+        \\&\leq   \frac{1}{n}\sup_{i \leq n}\lba a_{n, i} - a \rba \sum_{i=1}^n b_i + |a| \lba\frac{1}{n}\sum_{i=1}^n  b_i - b\rba
+        \\&\leq   \frac{1}{n}\sup_{i \leq n}\lba a_{i, i} -a\rba \sum_{i=1}^n b_i + |a| \frac{\epsilon}{3 (|a| + 1)}
+        \\&\leq   \frac{1}{n}\sup_{i \leq M'-1}\lba a_{i, i} -a\rba \sum_{i=1}^{M'-1} b_i+\frac{1}{n}\sup_{M' \leq i \leq n}\lba a_i \rba \sum_{i=M'}^{n} b_i + \frac{\epsilon}{3}
+        \\&\leq   \frac{\epsilon}{3} +\sup_{i \geq M'}\lba a_{i,i}-a \rba \frac{1}{n} \sum_{i=1}^{n} b_i + \frac{\epsilon}{3}
+        \\&\leq   \frac{\epsilon}{3} +\frac{\epsilon}{3 (b+1)} \lp \frac{\epsilon}{3 (|a| + 1)} + b\rp  + \frac{\epsilon}{3}
+        \leq   \frac{\epsilon}{3} +\frac{\epsilon}{3}  + \frac{\epsilon}{3}
+        = \epsilon.
+    \end{align*}
+\end{proof}
+
+\begin{lemma} \label{lemma:triangular_lemma}
+    Let $(a_{n, i})_{n \geq 1, i \in [n]}$ such that $a_{n, i} \geq 0$,  $\sum_{i = 1}^n a_{n, i} \leq C$ for some $C < \infty$, 
+    \begin{align*}
+        a_{n, i} \stackrel{n \to \infty}{\to} 0 \quad \forall i \geq 1,
+    \end{align*}
+    and $(b_n)_{n \geq 1}$ such that $b_{n} \stackrel{n \to \infty}{\to} 0$. Then,
+    \begin{align*}
+        \sum_{i=1}^n a_{n, i} b_i \stackrel{n \to \infty}{\to} 0.
+    \end{align*}
+\end{lemma}
+\begin{proof}
+    Let $\epsilon > 0$. We want to show that there exists $M \in \Nb$ such that $\sum_{i = 1}^n a_{n, i} b_i \leq \epsilon$ for all $n \geq M$.
+    \begin{itemize}
+        \item Given that $b_n \to 0$, there exists $M_1 \in \Nb$ such that $|b_n| \leq \frac{\epsilon}{2C}$ for all $n > M_1$.
+        \item Further, there exists $M_2 \in \Nb$ such that $\sum_{i=1}^{M_1} a_{n, i} b_i \leq \frac{\epsilon}{2}$ for all $n \geq M_2$. Such an $M_2$ exists, as it suffices to take $M_2 = \max \{ M_{2, i}: i \in [M_1]\}$, where $M_{2, i}$ is such that $a_{n, i}b_i \leq \frac{\epsilon}{2  M_1}$ (whose existence is granted by $a_{n, i} \to 0$ as $n \to \infty$ for any fixed $i$).
+    \end{itemize}
+    Taking $M = \max \{ M_1, M_2 \}$, it follows that 
+    \begin{align*}
+        \sum_{i=1}^n a_{n, i} b_i &= \sum_{i=1}^{M_1} a_{n, i} b_i + \sum_{i=M_1+1}^n a_{n, i} b_i
+        \\&\leq \frac{\epsilon}{2} + \frac{\epsilon}{2C}\sum_{i=M_1+1}^n a_{n, i}
+        \\&\stackrel{(i)}{\leq} \frac{\epsilon}{2} + \frac{\epsilon}{2C}\sum_{i=1}^n a_{n, i}
+        \stackrel{}{\leq} \frac{\epsilon}{2} + \frac{\epsilon}{2C}C
+        = \epsilon,
+    \end{align*}
+    where $(i)$ follows from $a_{n, i} \geq 0$, thus concluding the result.
+\end{proof}
+
+
+\begin{lemma} \label{lemma:sequence_lower_bounded_almost_surely}
+    Let $a >0$ and $b >0$. If $Z_n > 0$ a.s. and $Z_n \to b$ a.s., then
+    \begin{align*}
+        \inf_{n \geq 1} \frac{a}{n + 1} + \frac{n}{n+1} Z_n
+    \end{align*}
+    is strictly positive almost surely.
+\end{lemma}
+
+\begin{proof}
+     Given that $Z_n > 0$ a.s. and $Z_n \to b$ a.s., there exists $A \in \mathcal{F}$ such that $P(A) = 1$ and $Z_n(\omega) > 0$ for all $n$, as well as $Z_n(\omega) \to b$ with $n \to \infty$, for all $\omega \in A$. It suffices to show that, for $\omega \in A$, 
+    \begin{align*}
+        \inf_{n \geq 1} \frac{a}{n + 1} + \frac{n}{n+1} Z_n(\omega) > 0.
+    \end{align*}
+    In order to see this, observe that $Z_n(\omega) \to b$ implies that there exists $m \in \Nb$ such that $Z_n > \frac{b}{2}$ for all $n \geq m$. Given that the function $x \mapsto x / (x + 1)$ is increasing on $n$, for all $n \geq m$, 
+    \begin{align*}
+        \frac{a}{n + 1} + \frac{n}{n+1} Z_n(\omega) \geq \frac{n}{n+1} Z_n(\omega) \geq \frac{m}{m+1} Z_n(\omega) \geq \frac{m}{m+1} \frac{b}{2}.
+    \end{align*}
+    If $Z_n(w) > 0$, then for all $n < m$, 
+    \begin{align*}
+        \frac{a}{n + 1} + \frac{n}{n+1} Z_n(\omega) \geq  \frac{a}{n + 1} \geq \frac{a}{m}.
+    \end{align*}
+    From these two inequalities, we conclude that
+    \begin{align*}
+        \inf_{n \geq 1} \frac{a}{n + 1} + \frac{n}{n+1} Z_n(\omega) \geq \frac{a}{m} \wedge  \frac{m}{m+1} \frac{b}{2}
+    \end{align*}
+    for all $\omega \in A$.
+\end{proof}
+
+
+
+
+
+\section{Auxiliary propositions} \label{section:auxiliary_propositions}
+
+The proofs of the propositions exhibited herein are deferred to Appendix~\ref{appendix:auxiliary_propositions_proofs}. We start by presenting a proof of the almost sure convergence of the fourth moment estimator used throughout. Its proof can be found in Appendix~\ref{proof:fourth_moment_as_convergence}
+
+
+\begin{proposition} \label{proposition:fourth_moment_as_convergence}
+    Let $X_1, \ldots, X_n$ fulfill Assumption~\ref{ass:main_assumption} and Assumption~\ref{assumption:optimal_widths}. Let $(\widehat\mu_i)_{i \in [n]}$ and $(\widehat\sigma_i^2)_{i \in [n]}$ be $[0, 1]$-valued predictable sequences. If
+    \begin{align*}
+        \widehat\mu_n \stackrel{a.s.}{\to} \mu, \quad \widehat\sigma_n^2  \stackrel{a.s.}{\to} \sigma^2,
+    \end{align*}
+    then
+    \begin{align*}
+        \frac{1}{n} \sum_{i = 1}^n \lb (X_i - \widehat\mu_i)^2 - \widehat\sigma_i^2 \rb^2 \stackrel{a.s.}{\to} \V \lb(X-\mu)^2 \rb,
+    \end{align*}
+    which implies
+    \begin{align*}
+        \widehat m_{4, n}^2 \stackrel{a.s.}{\to} \V \lb(X-\mu)^2 \rb.
+    \end{align*}
+\end{proposition}
+
+If $\V \lb(X-\mu)^2 \rb = 0$, then the fourth moment estimator does not only converge to $0$ almost surely, but it also does it at a $\tilde\bigO (\frac{1}{t})$ rate. We start by formalizing this result when  $(\widehat m_{4, i}^2)_{i \in [n]}$ is defined as in Section~\ref{section:upper_bound}. Its proof may be found in Appendix~\ref{proof:zero_fourth_moment_scales_as_one_over_upper_bound}  
+
+\begin{proposition} \label{proposition:zero_fourth_moment_scales_as_one_over_upper_bound}
+    Let $X_1, \ldots, X_n$ fulfill Assumption~\ref{ass:main_assumption} and Assumption~\ref{assumption:optimal_widths} such that $\V \lb(X-\mu)^2 \rb = 0$. Let $(\widehat\mu_i)_{i \in [n]}$, $(\widehat\sigma_i^2)_{i \in [n]}$, and $(\widehat m_{4, i}^2)_{i \in [n]}$ be defined as in Section~\ref{section:upper_bound}. Then
+    \begin{align*}
+        \widehat m_{4, t}^2 = \tilde\bigO \lp \frac{1}{t}\rp
+    \end{align*}
+    almost surely.
+\end{proposition}
+
+The result also extends to the estimator $(\widehat m_{4, i}^2)_{i \in [n]}$ defined in Section~\ref{section:lower_bound}. We present such an extension next, whose proof we defer to Appendix~\ref{proof:zero_fourth_moment_scales_as_one_over_lower_bound}.
+
+\begin{proposition} \label{proposition:zero_fourth_moment_scales_as_one_over_lower_bound}
+    Let $X_1, \ldots, X_n$ fulfill Assumption~\ref{ass:main_assumption} and Assumption~\ref{assumption:optimal_widths} such that $\V \lb(X-\mu)^2 \rb = 0$. Let $(\widehat\mu_i)_{i \in [n]}$, $(\widehat\sigma_i^2)_{i \in [n]}$, and $(\widehat m_{4, i}^2)_{i \in [n]}$  be defined as in Section~\ref{section:lower_bound}. If  $\log (1 / \alpha_{1, n}) = \tilde\bigO(1)$ and $0 < \alpha_{1, n} \leq \alpha$, then
+    \begin{align*}
+        \widehat m_{4, t}^2 = \tilde\bigO \lp \frac{1}{t}\rp
+    \end{align*}
+    almost surely.
+\end{proposition}
+
+If $\V \lb(X-\mu)^2 \rb = 0$, the (normalized) sum of the plug-ins also converges almost surely to a tractable quantity. We present this result next, and defer the proof to Appendix~\ref{proof:sum_lambda_rescaled_converges}.
+
+\begin{proposition} \label{proposition:sum_lambda_rescaled_converges}
+    Let $X_1, \ldots, X_n$ fulfill Assumption~\ref{ass:main_assumption} and Assumption~\ref{assumption:optimal_widths} such that $\V \lb (X_i-\mu)^2\rb > 0$. Let $(\delta_n)_{n \geq 1}$ be a deterministic sequence such that
+    \begin{align*}
+        \delta_n \to \delta > 0, \quad \delta_n >0.
+    \end{align*}
+    Define
+    \begin{align*}
+        \lambda_{t,\delta_n} := \sqrt\frac{2\log(1/\delta_n)}{\widehat m_{4, t}^2 n} \wedge c_1,
+    \end{align*}
+    with $c_1 \in (0, 1]$ and $\widehat m_{4, t}^2$ defined as in Section~\ref{section:main_results} with $c_2 > 0$. Then
+    \begin{align*}
+        \frac{1}{\sqrt{n}} \sum_{i = 1}^n \lambda_{i,\delta_n} \stackrel{a.s.}{\to} \sqrt \frac{2 \log (1 / \delta)}{\V \lb (X_i-\mu)^2\rb}.
+    \end{align*}
+\end{proposition}
+
+If $\V \lb(X-\mu)^2 \rb > 0$, we study the inverse of the (normalized) sum of the plug-ins. In the next proposition, we prove that such a quantity converges almost surely to $0$ at a $\tilde \bigO ( \frac{1}{\sqrt n} )$ rate.  Its proof may be found in Appendix~\ref{proof:sum_lambda_rescaled_converges_zero_fourth_moment}.
+
+\begin{proposition} \label{proposition:sum_lambda_rescaled_converges_zero_fourth_moment}
+    Let $X_1, \ldots, X_n$ fulfill Assumption~\ref{ass:main_assumption} and Assumption~\ref{assumption:optimal_widths} such that $\V \lb (X_i-\mu)^2\rb = 0$. Let $(\delta_n)_{n \geq 1}$ be a deterministic sequence such that
+    \begin{align*}
+        \delta_n \to \delta > 0, \quad \delta_n >0.
+    \end{align*}
+    Define
+    \begin{align*}
+        \lambda_{t,\delta_n} := \sqrt\frac{2\log(1/\delta_n)}{\widehat m_{4, t}^2 n} \wedge c_1,
+    \end{align*}
+    with $c_1 \in (0, 1)$. Then
+    \begin{align*}
+        \frac{1}{\frac{1}{\sqrt{n}} \sum_{i = 1}^n \lambda_{i,\delta_n}} = \tilde \bigO \lp \frac{1}{\sqrt n} \rp
+    \end{align*}
+    almost surely.
+\end{proposition}
+
+We now analyze the almost sure converge of the sum of the product of two sequences of random variables, one involving the plug-ins through the function $\psi_E$. Its proof may be found in Appendix~\ref{proof:sum_psi_e_lambda_rescaled_converges}
+
+\begin{proposition} \label{proposition:sum_psi_e_lambda_rescaled_converges}
+    Let $X_1, \ldots, X_n$ fulfill Assumption~\ref{ass:main_assumption} and Assumption~\ref{assumption:optimal_widths} such that $\V \lb (X_i-\mu)^2\rb > 0$. Let $(\delta_n)_{n \geq 1}$ be a deterministic sequence such that
+    \begin{align*}
+        \delta_n \nearrow \delta > 0, \quad \delta_n >0.
+    \end{align*}
+    Define
+    \begin{align*}
+        \lambda_{t,\delta_n} := \sqrt\frac{2\log(1/\delta_n)}{\widehat m_{4, t}^2 n} \wedge c_1,
+    \end{align*}
+    with $c_1 > 0$, and $\widehat m_{4, t}^2$ defined as in Section~\ref{section:main_results} with $c_2 > 0$. Let $(Z_n)_{n\geq1}$ be such that
+    \begin{align*} 
+        Z_i \geq 0, \quad \frac{1}{n} \sum_{i=1}^n Z_i \stackrel{a.s.}{\to} a,
+    \end{align*}
+    with $a \in \R$. Then
+    \begin{align*}
+         \sum_{i = 1}^n \psi_E \lp \lambda_{i,\delta_n} \rp Z_i \stackrel{a.s.}{\to} \frac{a \log(1/\delta)}{V \lb (X_i-\mu)^2\rb}.
+    \end{align*}
+\end{proposition}
+
+
+
+
+
+
+Lastly, we present a technical proposition that will be used in the proof of Theorem~\ref{theorem:lower_order_term}. We defer its proof to Appendix~\ref{proof:nasty_sum_scales_logarithmically}.
+
+\begin{proposition} \label{proposition:nasty_sum_scales_logarithmically}
+    Let $\alpha_{1, n} =  \Omega \lp \frac{1}{\log(n)} \rp$ and $\widehat\sigma_k$ be defined as in Section~\ref{section:main_results}, with $c_3 > 0$. Then
+    \begin{align} \label{eq:nasty_sum_scales_logarithmically}
+     \sum_{2 \leq i \leq n} \frac{\lc \log(2/\alpha_{1,n}) + \sigma^2\sum_{k=1}^{i-1} \psi_P\lp\sqrt\frac{2\log(2/\alpha_{1,n})}{\widehat \sigma_{k}^2 k \log (1+k)}\wedge c_5\rp\rc^2}{\lp \sum_{k=1}^{i-1} \sqrt\frac{2\log(2/\alpha_{1,n})}{\widehat \sigma_{k}^2 k \log (1+k)} \wedge c_5\rp^2} = \tilde\bigO \lp 1\rp
+    \end{align}
+almost surely.
+\end{proposition}
+
+
+
+\section{Main proofs} \label{appendix:main_proofs}
+
+\subsection{Proof of Theorem~\ref{theorem:bennett_anytimevalid}} \label{proof:bennett_anytimevalid}
+
+Fix $t$ and observe
+\begin{align*}
+    \E_{t-1} \exp \lp \tilde\lambda_t (X_t-\mu)\rp &= \E_{t-1} \sum_{k = 0}^\infty \frac{\lp \tilde\lambda_t (X_t-\mu)\rp^k}{k!} 
+    \\&=  \sum_{k = 0}^\infty \frac{\tilde\lambda_t^k \E_{t-1} \lb (X_t-\mu)^k \rb}{k!}
+    \\&\stackrel{(i)}{=} 1 + \sum_{k = 2}^\infty \frac{\tilde\lambda_t^k \E_{t-1} \lb (X_t-\mu)^k \rb}{k!}
+    \\&\stackrel{(ii)}{\leq} 1 + \E_{t-1} \lb (X_t-\mu)^2 \rb\sum_{k = 2}^\infty \frac{\tilde\lambda_t^k }{k!}
+    \\&\stackrel{(iii)}{=} 1 + \sigma^2 \psi_P(\tilde\lambda_t)
+    \\&\stackrel{(iv)}{\leq} \exp \lp \sigma^2 \psi_P(\tilde\lambda_t) \rp,
+\end{align*}
+where (i) follows from $\E X_t = \mu$, (ii) from $|X_t- \mu| \leq 1$, (iii) from $\E_{t-1} \lb (X_t-\mu)^2 \rb = \sigma^2$, and (iv) from $1 + x \leq \exp(x)$ for all $x \in \R$.
+
+It thus follows that 
+\begin{align*}
+    S_t' = \exp \lp \sum_{i \leq t} \tilde\lambda_i (X_i - \mu) - \sigma^2\sum_{i \leq t} \psi_P(\tilde\lambda_i)\rp \quad t \geq 1, \quad S_0' = 1,
+\end{align*}
+is a nonnegative supermartingale. In view of Ville's inequality (Theorem~\ref{theorem:villesinequality}), we observe that
+\begin{align*}
+    \Pb \lp \exp\lc\sum_{i \leq t} \tilde\lambda_i (X_i - \mu) - \sigma^2\sum_{i \leq t} \psi_P(\tilde\lambda_i)\rc \geq 2/\delta \rp \leq \frac{\delta}{2},
+\end{align*}
+thus
+\begin{align*}
+    \Pb \lp \sum_{i \leq t} \tilde\lambda_i (X_i - \mu) - \sigma^2\sum_{i \leq t} \psi_P(\tilde\lambda_i) \geq \log (2/\delta) \rp \leq \frac{\delta}{2},
+\end{align*}
+and so 
+\begin{align*}
+    \Pb \lp \mu \leq \frac{\sum_{i \leq t} \tilde\lambda_i X_i - \sigma^2\sum_{i \leq t} \psi_P(\tilde\lambda_i) - \log (2/\delta)}{\sum_{i \leq t} \tilde\lambda_i} \rp \leq \frac{\delta}{2}.
+\end{align*}
+
+Arguing analogously replacing $X_i - \mu$ for $\mu - X_i$ and taking the union bound concludes the proof.
+
+
+\subsection{Proof of Theorem~\ref{theorem:main_supermartingale_theorem}} \label{proof:main_supermartingale_theorem}
+
+
+The processes are clearly nonnegative, so it remains to prove that they are supermartingales. Let us begin by showing that $S_t^+$ is indeed a supermartingale, i.e.,
+\begin{align} \label{eq:supermaringale_condition}
+    \E_{t-1} \exp \lc \lambda_t \lb (X_t - \widehat\mu_t)^2 - \tilde\sigma_t^2  \rb - \psi_E(\lambda_t) \lp (X_t - \widehat\mu_t)^2 - \widehat \sigma_t^2 \rp^2 \rc \leq 1
+\end{align}
+for any $t \geq 1$. In order to see this, denote
+\begin{align*}
+    Y_t = (X_t - \widehat\mu_t)^2 - \tilde\sigma_t^2, \quad \delta_t = \widehat \sigma_t^2 - \tilde\sigma_t^2,
+\end{align*}
+and restate \eqref{eq:supermaringale_condition} as
+\begin{align} \label{eq:supermaringale_condition_simplified}
+    \E_{t-1} \exp \lc \lambda_t Y_t - \psi_E(\lambda_t) \lp Y_t - \delta_t \rp^2 \rc \leq 1.
+\end{align}
+From \citet[Proposition 4.1]{fan_exponential_2015}, which establishes that $\exp \lc \xi\lambda - \xi^2 \psi_E(\lambda)\rc \leq 1 + \xi \lambda$ for any $\lambda \in [0, 1)$ and $\xi \geq -1$, it follows that
+\begin{align*}
+    &\E_{t-1} \exp \lc \lambda_t Y_t - \psi_E(\lambda_t) \lp Y_t - \delta_t \rp^2 \rc
+    \\& =\exp (\lambda_t \delta_t)\E_{t-1} \exp \lc \lambda_t (Y_t - \delta_t) - \psi_E(\lambda_t) \lp Y_t -  \delta_t \rp^2 \rc 
+    \\ &\leq  \exp (\lambda_t \delta_t) \E_{t-1} \lb 1 + \lambda_t (Y_t - \delta_t)\rb
+    \\ &\stackrel{(i)}{=}  \exp (\lambda_t \delta_t)  \lp 1 - \lambda_t \delta_t\rp
+    \\ &\stackrel{(ii)}{\leq}  \exp (\lambda_t \delta_t) \exp\lp - \lambda_t \delta_t \rp
+    \\&= 1,
+\end{align*}
+where (i) is obtained given that $\E_{t-1} Y_t = 0$, and (ii) from $1+x \leq e^x$ for all $x\in\R$. 
+
+Showing that $S_t^-$ is a supermartingale follows analogously, but replacing $Y_t$ and $\delta_t$ by
+\begin{align*}
+      -(X_t - \widehat\mu_t)^2 + \tilde\sigma_t^2, \quad  -\widehat \sigma_t^2 + \tilde\sigma_t^2.
+\end{align*}
+Note that this proof is analogous to the proof of~\citet[Theorem 2]{waudby2024estimating}, but with non-constant conditional expectations $\tilde\sigma_i^2$.
+
+
+
+
+\subsection{Proof of Corollary~\ref{corollary:main_corollary}} \label{proof:main_corollary}
+
+In view of Ville's inequality (Theorem~\ref{theorem:villesinequality}) and Theorem~\ref{theorem:main_supermartingale_theorem}, the probability of the event
+\begin{align*}
+     \exp \lc \sum_{i_\leq t} \lambda_i \lb\pm (X_i - \widehat\mu_i)^2 \mp \tilde\sigma_i^2  \rb - \psi_E(\lambda_i) \lb (X_i - \widehat\mu_i)^2 - \widehat \sigma_i^2 \rb^2 \rc \geq 2/\delta 
+\end{align*}
+uniformly over $t$ is upper bounded by $\frac{\delta}{2}$, and so is
+\begin{align*}
+      \sum_{i_\leq t} \lambda_i \lb\pm (X_i - \widehat\mu_i)^2 \mp \tilde\sigma_i^2  \rb - \psi_E(\lambda_i) \lb (X_i - \widehat\mu_i)^2 - \widehat \sigma_i^2 \rb^2  \geq \log (2/\delta) 
+\end{align*}
+uniformly over $t$. Thus
+\begin{align*}
+    \Pb \lp \sup_t \mp \frac{\sum_{i_\leq t} \lambda_i  \tilde\sigma_i^2}{\sum_{i_\leq t} \lambda_i  } \pm D_t  - R_{t, \frac{\alpha}{2}} \geq 0\rp \leq \frac{\delta}{2}.
+\end{align*}
+From
+\begin{align*}
+    \frac{\sum_{i_\leq t} \lambda_i  \tilde\sigma_i^2}{\sum_{i_\leq t} \lambda_i  } = \frac{\sum_{i_\leq t} \lambda_i  \lb\sigma^2 + (\widehat\mu_i - \mu)^2\rb}{\sum_{i_\leq t} \lambda_i} = \sigma^2 + E_t,
+\end{align*}
+it follows that
+\begin{align*}
+    \Pb \lp \sup_t \mp \sigma^2 \mp E_t \pm D_t  - R_{t, \frac{\alpha}{2}} \geq 0\rp \leq \frac{\delta}{2},
+\end{align*}
+which allows to conclude that 
+\begin{align*}
+    \Pb \lp \sigma \notin \lp D_t - E_t - R_{t, \frac{\alpha}{2}} ,  D_t - E_t + R_{t, \frac{\alpha}{2}}\rp \rp  \leq \frac{\delta}{2},
+\end{align*}
+uniformly over $t$.
+
+
+
+
+
+\subsection{Proof of Corollary~\ref{corollary:lower_bound}} \label{proof:lower_bound}
+
+As exhibited in Section~\ref{section:lower_bound},
+\begin{align*}
+    \sigma^2 \geq D_t - \frac{\sum_{i \leq t}\lambda_i \tilde R_{i, \alpha_1}^2}{\sum_{i \leq t} \lambda_i} -  R_{t, \alpha_2}
+\end{align*}
+uniformly over $t$ with probability $\alpha_1 + \alpha_2 = \alpha$. Taking $\tilde R_{i, \alpha_1}^2$ as in \eqref{eq:widehat_mu_definition} leads to 
+\begin{align*}
+    \sigma^2 \geq D_t - \frac{\sum_{i \leq t}\lambda_i \lp \tilde C^{(2)}_t \sigma^4 + \tilde C^{(1)}_{t, \alpha_1} \sigma^2 + \tilde C^{(0)}_{t, \alpha_1}\rp }{\sum_{i \leq t} \lambda_i} -  R_{t, \alpha_2},
+\end{align*}
+i.e.,
+\begin{align*}
+    \sigma^2 \geq D_t - C^{(2)}_t \sigma^4 - \lp C^{(1)}_{t, \alpha_1} - 1 \rp \sigma^2 - C^{(0)}_{t, \alpha_1} -  R_{t, \alpha_2}.
+\end{align*}
+Thus, it suffices to consider $\sigma^2 \geq \sigma^2_{l, t}$, where $\sigma^2_{l, t}$ is such that
+\begin{align*}
+   \sigma^2_{l, t} = D_t - C^{(2)}_t \sigma^4_{l, t} - \lp C^{(1)}_{t, \alpha_1} - 1 \rp \sigma^2_{l, t} - C^{(0)}_{t, \alpha_1} -  R_{t, \alpha_2}.
+\end{align*}
+Clearly, solving for this quadratic polynomial leads to \eqref{eq:lower_bound_process}.  
+
+
+
+\subsection{Proof of Theorem~\ref{theorem:convergence_main_term}} \label{proof:convergence_main_term}
+
+We proceed differently for the cases $\V \lb (X_i-\mu)^2\rb = 0$ and $\V \lb (X_i-\mu)^2\rb > 0$.
+
+\textbf{Case 1: $\V \lb (X_i-\mu)^2\rb = 0$.} Note that 
+\begin{align*}
+    \sqrt{n} R_{n, \delta_n} &= \frac{\log(1/\delta_n) + \sum_{i \leq n}\psi_E(\lambda_{i, \delta_n}) \lp (X_i - \widehat\mu_i)^2 - \widehat \sigma_i^2 \rp^2}{\frac{1}{\sqrt{n}}\sum_{i \leq n} \lambda_{i, \delta_n}}.
+\end{align*}
+ Denote %Let $\lp \Omega, \mathcal{F}, P \rp$ be the probability space on which  $(X_n)_{n\geq1}$ are defined.
+\begin{align*}
+    \nu_i^2 := \lp (X_i - \widehat\mu_i)^2 - \widehat \sigma_i^2 \rp^2.
+\end{align*}
+In view of Proposition~\ref{proposition:zero_fourth_moment_scales_as_one_over_upper_bound} or Proposition~\ref{proposition:zero_fourth_moment_scales_as_one_over_lower_bound}, it follows that
+\begin{align*}
+    n\widehat m_{4, n}^2 = \tilde\bigO \lp 1 \rp
+\end{align*}
+almost surely, and so there exists $A \in \F$ with $P(A) = 1$ such that $n\widehat m_{4, n}^2(\omega) = \tilde\bigO \lp 1 \rp$ for all $\omega \in A$. For $\omega \in A$, it may be that
+\begin{align} \label{eq:tmt_less_infty_proposition}
+    \sum_{i = 1}^\infty \nu_i^2 (\omega) =: M < \infty
+\end{align}
+or 
+\begin{align} \label{eq:tmt_infty_proposition}
+    \sum_{i = 1}^\infty \nu_i^2 (\omega) = \infty.
+\end{align}
+If \eqref{eq:tmt_less_infty_proposition} holds, then
+\begin{align*}
+    \sum_{i \leq n}\psi_E(\lambda_{i, \delta_n}(\omega)) \lp (X_i(\omega) - \widehat\mu_i(\omega))^2 - \widehat \sigma_i^2 (\omega)\rp^2 &= \sum_{i \leq n}\psi_E(\lambda_{i, \delta_n}(\omega)) \nu_i^2(\omega)
+    \\&\leq \psi_E(c_1)\sum_{i \leq n} \nu_i^2(\omega)
+    \\&\leq \psi_E(c_1)M,
+\end{align*}
+and so $\log(1/\delta_n) + \sum_{i \leq n}\psi_E(\lambda_{i, \delta_n}(\omega)) \lp (X_i(\omega) - \widehat\mu_i(\omega))^2 - \widehat \sigma_i^2(\omega) \rp^2$ is upper bounded by $\log(1/l) + \psi_E(c_1)M$, where $l = \inf_{n \in \Nb} \delta_n$ (which is strictly positive given that $\delta_n \to \delta > 0$ and $\delta_n >0$). If \eqref{eq:tmt_infty_proposition} holds, then there exists $m(\omega) \in \Nb$ such that, for $t \geq m(\omega)$, 
+    \begin{align*}
+        \widehat m_{4, t}^2(\omega) t = c_2 + \sum_{i = 1}^{t-1} \nu_i^2 (\omega) \geq \frac{2\log(1/l)}{c_1^2}.
+    \end{align*}
+    Thus
+    \begin{align*}
+        \sqrt\frac{2\log(1/\delta_n)}{\widehat m_{4, t}^2(\omega) n} \leq \sqrt\frac{2\log(1/l)}{\widehat m_{4, t}^2(\omega) t} \leq  c_1,
+    \end{align*}
+    and so
+    \begin{align*}
+        \lambda_{i,\delta_n}(\omega) =  \sqrt\frac{2\log(1/\delta_n)}{\widehat m_{4, t}^2(\omega) n}
+    \end{align*}
+    for $i \geq m(\omega)$. Denote
+    \begin{align*}
+    (I_n(\omega)) &:= \log(1/\delta_n) + \sum_{i < m(\omega)}\psi_E(\lambda_{i, \delta_n}(\omega)) \lp (X_i(\omega) - \widehat\mu_i(\omega))^2 - \widehat \sigma_i^2 (\omega) \rp^2,
+    \\ (II_n(\omega)) &:= \sum_{i=m(\omega)}^n\psi_E(\lambda_{i, \delta_n}) \lp (X_i(\omega) - \widehat\mu_i(\omega))^2 - \widehat \sigma_i^2(\omega) \rp^2.
+    \end{align*}
+    We observe that
+    \begin{align*}
+        (I_n(\omega)) \leq \log(1/l) + \psi_E(c_1)\sum_{i < m(\omega)} \lp (X_i(\omega) - \widehat\mu_i(\omega))^2 - \widehat \sigma_i^2(\omega) \rp^2,
+    \end{align*}
+    and so it is bounded. Furthermore,
+    \begin{align*}
+        (II_n(\omega)) &= \sum_{i=m(\omega)}^n\psi_E \lp \sqrt\frac{2\log(1/\delta_n)}{\widehat m_{4, i}^2(\omega) n} \rp \lp (X_i(\omega) - \widehat\mu_i(\omega))^2 - \widehat \sigma_i^2(\omega) \rp^2
+        \\&\stackrel{(i)}{\leq} \frac{2\log(1/\delta_n)\psi_E \lp  c_1 \rp}{c_1^2}  \sum_{i=m(\omega)}^n \frac{1}{\widehat m_{4, i}^2(\omega) n} \lp (X_i(\omega) - \widehat\mu_i(\omega))^2 - \widehat \sigma_i^2(\omega) \rp^2
+        \\&\stackrel{}{\leq} \frac{2\log(1/l)\psi_E \lp  c_1 \rp}{c_1^2}  \sum_{i=m(\omega)}^n \frac{1}{\widehat m_{4, i}^2(\omega) n} \lp (X_i(\omega) - \widehat\mu_i(\omega))^2 - \widehat \sigma_i^2(\omega) \rp^2
+        \\&\stackrel{}{\leq} \frac{2\log(1/l)\psi_E \lp  c_1 \rp}{c_1^2 }  \sum_{i=m(\omega)}^n \frac{1}{i\widehat m_{4, i}^2(\omega) } \lp (X_i(\omega) - \widehat\mu_i(\omega))^2 - \widehat \sigma_i^2(\omega) \rp^2
+        \\&\stackrel{}{=} \frac{2\log(1/l)\psi_E \lp  c_1 \rp}{c_1^2 }  \sum_{i=m(\omega)}^n \frac{1}{c_2 + \sum_{i = 1}^{i-1} \nu_i^2 (\omega)} \nu_i^2(\omega)
+        \\&\stackrel{(ii)}{\leq} \frac{2\log(1/l)\psi_E \lp  c_1 \rp}{c_1^2 }  \log \lp c_2 + \sum_{i = 1}^{n} \nu_i^2 (\omega) \rp
+        \\&\stackrel{}{=} \frac{2\log(1/l)\psi_E \lp  c_1 \rp}{c_1^2 }  \log \lp \widehat m_{4, n}^2(\omega) n \rp
+    \end{align*}
+    where (i) follows from Lemma~\ref{lemma:psi_p_decoupled} and $c_1 \in (0,1)$, and (ii) follows from Lemma~\ref{lemma:sum_ai_over_sum_ai}. Given that $m_{4, n}^2(\omega) n  = \tilde\bigO \lp 1 \rp$, it follows from the previous inequalities that $(I_n(\omega)) + (II_n(\omega))$ is also $\tilde\bigO \lp 1 \rp$. Consequently, we have shown that regardless of \eqref{eq:tmt_less_infty_proposition} or \eqref{eq:tmt_infty_proposition} holding, it follows that 
+    \begin{align*}
+        \sum_{i \leq n}\psi_E(\lambda_{i, \delta_n}(\omega)) \lp (X_i(\omega) - \widehat\mu_i(\omega))^2 - \widehat \sigma_i^2 (\omega)\rp^2 &= \tilde\bigO \lp 1 \rp
+    \end{align*}
+    for all $\omega \in A$, with $P(A) = 1$. That is, 
+    \begin{align*}
+        \log(1/\delta_n) + \sum_{i \leq n}\psi_E(\lambda_{i, \delta_n}) \lp (X_i - \widehat\mu_i)^2 - \widehat \sigma_i^2 \rp^2 &= \tilde\bigO \lp 1 \rp
+    \end{align*}
+    almost surely. Further, by Proposition~\ref{proposition:sum_lambda_rescaled_converges_zero_fourth_moment} and $\delta_{n} \to \delta$, it also follows that
+     \begin{align*}
+        \frac{1}{\frac{1}{\sqrt{n}} \sum_{i = 1}^n \lambda_{i,\delta_{n}}} = \tilde \bigO \lp \frac{1}{\sqrt n} \rp
+    \end{align*}
+    almost surely. Thus, it is concluded that 
+    \begin{align*}
+         \sqrt{n} R_{n, \delta_n} = \tilde \bigO \lp \frac{1}{\sqrt n} \rp
+    \end{align*}
+    almost surely, and so it converges to $0$ almost surely.
+    
+
+
+\textbf{Case 2: $\V \lb (X_i-\mu)^2\rb > 0$.} 
+By Proposition~\ref{proposition:sum_lambda_rescaled_converges},
+\begin{align*}
+    \frac{1}{\sqrt{n}} \sum_{i = 1}^n \lambda_{i,\delta_{ n}} \stackrel{a.s.}{\to} \sqrt \frac{2 \log (1 / \delta)}{\V \lb (X_i-\mu)^2\rb}.
+\end{align*}
+In view of
+\begin{align*}
+    \frac{1}{n}\sum_{i \leq n}\lp (X_i - \widehat\mu_i)^2 - \widehat \sigma_i^2 \rp^2 \to \V \lb (X_i-\mu)^2\rb
+\end{align*}
+almost surely (Proposition~\ref{proposition:fourth_moment_as_convergence}) and Proposition~\ref{proposition:sum_psi_e_lambda_rescaled_converges}, it follows that
+\begin{align*}
+    \sum_{i \leq n}\psi_E(\lambda_i) \lp (X_i - \widehat\mu_i)^2 - \widehat \sigma_i^2 \rp^2 \to \frac{V \lb (X_i-\mu)^2\rb \log(1/\delta)}{V \lb (X_i-\mu)^2\rb} = \log(1/\delta).
+\end{align*}
+We thus conclude that 
+\begin{align*}
+    \sqrt{n} R_{n, \delta_n} \to \frac{\log(1/\delta) + \log(1/\delta)}{\sqrt\frac{2 \log (1 / \delta)}{\V \lb (X_i-\mu)^2\rb}} = \sqrt{ 2\V \lb (X_i-\mu)^2\rb \log (1 / \delta) }
+\end{align*}
+almost surely.
+
+
+\subsection{Proof of Theorem~\ref{theorem:lower_order_term}} \label{proof:lower_order_term}
+
+We differentiate the cases $\V \lb (X_i-\mu)^2\rb = 0$ and $\V \lb (X_i-\mu)^2\rb > 0$.
+
+\textbf{Case 1: $\V \lb (X_i-\mu)^2\rb = 0$.} By Proposition~\ref{proposition:sum_lambda_rescaled_converges_zero_fourth_moment} and $\alpha_{2, n} \to \alpha$,
+ \begin{align*}
+    \frac{1}{\frac{1}{\sqrt{n}} \sum_{i = 1}^n \lambda_{i,\alpha_{2, n}}} = \tilde \bigO \lp \frac{1}{\sqrt n} \rp
+\end{align*}
+almost surely. Furthermore, in view of Proposition~\ref{proposition:nasty_sum_scales_logarithmically},
+\begin{align*}
+    \sum_{i \leq n} \frac{\lc \log(2/\alpha_{1,n}) + \sigma^2\sum_{k=1}^{i-1} \psi_P\lp\sqrt\frac{2\log(2/\alpha_{1,n})}{\widehat \sigma_{k}^2 k \log (1+k)}\wedge c_5\rp\rc^2}{\lp \sum_{k=1}^{i-1} \sqrt\frac{2\log(2/\alpha_{1,n})}{\widehat \sigma_{k}^2 k \log (1+k)} \wedge c_5\rp^2}.
+\end{align*}
+is $\tilde\bigO (1)$ almost surely. Thus, the product of both is $\tilde \bigO \lp \frac{1}{\sqrt n} \rp$ almost surely, which further implies that it converges to $0$ almost surely.  
+
+\textbf{Case 2: $\V \lb (X_i-\mu)^2\rb > 0$.} By Proposition~\ref{proposition:sum_lambda_rescaled_converges} and $\alpha_{2, n} \to \alpha$, 
+\begin{align*}
+    \frac{1}{\sqrt{n}}\sum_{i \leq n} \lambda_{i, \alpha_{2, n}} \stackrel{a.s.}{\to} \sqrt \frac{2 \log (1 / \delta)}{\V \lb (X_i-\mu)^2\rb}.
+\end{align*}
+Thus, it suffices to prove
+\begin{align} \label{eq:sufficient_condition_r2}
+    \sum_{i \leq n} \lambda_{i, \alpha_{2, n}} R_{i, \alpha_{1,n}} ^2 \stackrel{a.s.}{\to} 0
+\end{align}
+to conclude the proof. We note that $\lambda_{i, \alpha_{2, n}} R_{i, \alpha_{1,n}} ^2$ is equal to
+\begin{align*}
+    \frac{1}{\sqrt n}\sum_{i \leq n} \sqrt{n} \lambda_{i, \alpha_{2, n}} \frac{\lc \log(2/\alpha_{1,n}) + \sigma^2\sum_{k=1}^{i-1} \psi_P\lp\sqrt\frac{2\log(2/\alpha_{1,n})}{\widehat \sigma_{k}^2 k \log (1+k)}\wedge c_5\rp\rc^2}{\lp \sum_{k=1}^{i-1} \sqrt\frac{2\log(2/\alpha_{1,n})}{\widehat \sigma_{k}^2 k \log (1+k)} \wedge c_5\rp^2}.
+\end{align*}
+By Proposition~\ref{proposition:nasty_sum_scales_logarithmically},
+\begin{align*}
+    \frac{1}{\sqrt n}\sum_{i \leq n} \frac{\lc \log(2/\alpha_{1,n}) + \sigma^2\sum_{k=1}^{i-1} \psi_P\lp\sqrt\frac{2\log(2/\alpha_{1,n})}{\widehat \sigma_{k}^2 k \log (1+k)}\wedge c_5\rp\rc^2}{\lp \sum_{k=1}^{i-1} \sqrt\frac{2\log(2/\alpha_{1,n})}{\widehat \sigma_{k}^2 k \log (1+k)} \wedge c_5\rp^2}.
+\end{align*}
+is $\tilde\bigO (\frac{1}{\sqrt n})$ almost surely, and so it suffices to show that
+\begin{align*}
+    \sup_{n\in\Nb}\sup_{i \leq n} \sqrt{n} \lambda_{i, \alpha_{2, n}}
+\end{align*}
+is bounded almost surely in order to conclude the result (in view of Hölder's inequality, \eqref{eq:sufficient_condition_r2} will follow). Analogously to the proof of Proposition~\ref{proposition:sum_lambda_rescaled_converges}, there exist $m_\omega \in \Nb$ and $u(\omega) < \infty$ such that
+\begin{align*}
+    \lambda_{t,\alpha_{2, n}}(\omega) = \sqrt\frac{2\log(1/\alpha_{2, n})}{\widehat m_{4, t}^2(\omega) n}, \quad \frac{1}{\widehat m_{4, n}^2(\omega)} \leq u(\omega),
+\end{align*}
+for $n \geq m_\omega$ and $\omega \in A$, with $P(A) = 1$.
+Given that $\alpha_{2, n} \to \alpha > 0$ and $\alpha_{2, n} >0$, then $l := \inf_{n} \alpha_{2, n} > 0$, and so we observe that
+    \begin{align*}
+        \sqrt{n}\lambda_{t,\alpha_{2, n}}(\omega) = \sqrt\frac{2\log(1/\alpha_{2, n})}{\widehat m_{4, t}^2(\omega)} \leq \sqrt{2\log(1/l)} u(\omega)
+    \end{align*}
+for $n \geq m_\omega$. It follows that
+\begin{align*}
+    \sup_{n\in\Nb}\sup_{i \leq n} \sqrt{n} \lambda_{i, \alpha_{2, n}}(\omega) \leq \lp \sqrt{2\log(1/l)} u(\omega) \rp\vee\lp \sup_{n < m_\omega}\sup_{i \leq n} \sqrt{n} \lambda_{i, \alpha_{2, n}}(\omega)\rp < \infty,
+\end{align*}
+and thus the result is concluded by Hölder's inequality.
+
+\subsection{Proof of Theorem~\ref{theorem:vectorvalued_bennett_anytimevalid}} \label{proof:vectorvalued_bennett_anytimevalid}
+Denote 
+    \begin{align*}
+        f_t = \sum_{i \leq t}\tilde\lambda_i (X_i-\mu).
+    \end{align*}
+    \citet[Theorem 3.2]{pinelis1994optimum} showed that\footnote{\citet[Theorem 3.2]{pinelis1994optimum} requires separability (required in \citet[Lemma 2.3]{pinelis1994optimum}). Separability is ultimately needed to ensure the tightness of the probability measure on the (more generally) Banach space.} 
+    \begin{align*}
+        \E_{t-1} \cosh \lp \ldba f_t \rdba  \rp \leq \lp 1 + \E_{t-1}\psi_P\lp \tilde\lambda_t \ldba X_t - \mu \rdba \rp  \rp \cosh \lp \ldba f_{t-1} \rdba  \rp.
+    \end{align*} 
+    Similarly to the proof of Theorem~\ref{theorem:bennett_anytimevalid}, it now follows that
+    \begin{align*}
+        1+\E_{t-1}\psi_P\lp \tilde\lambda_t \ldba X_t - \mu \rdba \rp &= 1+\E_{t-1} \sum_{k = 2}^\infty \frac{\lp \tilde\lambda_t \ldba X_t-\mu\rdba\rp^k}{k!} 
+        \\&=  1+\sum_{k = 2}^\infty \frac{\tilde\lambda_t^k \E_{t-1} \lb \ldba X_t-\mu\rdba^k \rb}{k!}
+        \\&\stackrel{(i)}{=} 1 + \sum_{k = 2}^\infty \frac{\tilde\lambda_t^k \E_{t-1} \lb \ldba X_t-\mu \rdba^k \rb}{k!}
+        \\&\stackrel{(ii)}{\leq} 1 + \E_{t-1} \lb \ldba X_t-\mu\rdba^2 \rb\sum_{k = 2}^\infty \frac{\tilde\lambda_t^k }{k!}
+        \\&\stackrel{(iii)}{=} 1 + \sigma^2 \psi_P(\tilde\lambda_t)
+        \stackrel{(iv)}{\leq} \exp \lp \sigma^2 \psi_P(\tilde\lambda_t) \rp,
+    \end{align*}
+    where (i) follows from $\E X_t = \mu$, (ii) follows from $\|X_t- \mu\| \leq 1$, (iii) follows from $\E_{t-1} \ldba X_t-\mu\rdba^2  = \sigma^2$, and (iv) follows from $1 + x \leq \exp(x)$ for all $x \in \R$. Thus, the process
+    \begin{align*}
+        S_t' = \cosh \lp\ldba\sum_{i \leq t}\tilde\lambda_i (X_i-\mu)\rdba\rp\exp\lp - \sigma^2\sum_{i \leq t} \psi_P(\tilde\lambda_i)\rp,
+    \end{align*}
+    for $t \geq 1$, and $S_0' = 1$, is a nonnegative supermartingale. In view of Ville's inequality (Theorem~\ref{theorem:villesinequality}) we observe that
+    \begin{align*}
+        \Pb \lp \cosh \lp\ldba\sum_{i \leq t}\tilde\lambda_i (X_i-\mu)\rdba\rp\exp\lp - \sigma^2\sum_{i \leq t} \psi_P(\tilde\lambda_i)\rp \geq \frac{1}{\delta} \rp \leq \delta,
+    \end{align*}
+    and, from $\exp x \leq2\cosh x$ for $x \in\R$, it follows that
+    \begin{align*}
+        \Pb \lp \exp \lp \ldba\sum_{i \leq t}\tilde\lambda_i (X_i-\mu)\rdba - \sigma^2\sum_{i \leq t} \psi_P(\tilde\lambda_i)\rp \geq \frac{2}{\delta} \rp \leq \delta.
+    \end{align*}
+    Thus
+    \begin{align*}
+        \Pb \lp \ldba\sum_{i \leq t}\tilde\lambda_i (X_i-\mu)\rdba - \sigma^2\sum_{i \leq t} \psi_P(\tilde\lambda_i) \geq \log (2/\delta) \rp \leq \frac{\delta}{2},
+    \end{align*}
+    and so 
+    \begin{align*}
+        \Pb \lp \ldba\mu-\frac{\sum_{i \leq t}\tilde\lambda_i X_i}{\sum_{i \leq t}\tilde\lambda_i} \rdba\leq \frac{\sigma^2\sum_{i \leq t} \psi_P(\tilde\lambda_i) + \log (2/\delta)}{\sum_{i \leq t} \tilde\lambda_i} \rp \leq \frac{\delta}{2}.
+    \end{align*}
+
+
+\subsection{Proof of Theorem~\ref{theorem:main_supermartingale_theorem_HS}} \label{proof:main_supermartingale_theorem_HS}
+
+The proof is analogous to that of Theorem~\ref{theorem:main_supermartingale_theorem}, replacing $Y_t = (X_t - \widehat\mu_t)^2 - \tilde\sigma_t^2$ by $Y_t = \ldba X_t - \widehat\mu_t\rdba^2 - \tilde\sigma_t^2$.
+
+
+\section{Proofs of auxiliary propositions} \label{appendix:auxiliary_propositions_proofs}
+
+\subsection{Proof of Proposition~\ref{proposition:fourth_moment_as_convergence}} \label{proof:fourth_moment_as_convergence}
+
+Denote $\tilde m_{4, n}^2 := \frac{1}{n} \sum_{i = 1}^n \lb (X_i - \widehat\mu_i)^2 - \widehat\sigma_i^2 \rb^2 $. Then
+    \begin{align*}
+        \tilde m_{4, n}^2 &= \frac{1}{n} \sum_{i = 1}^n \lb (X_i - \widehat\mu_i)^2 - \sigma^2 + \sigma^2 - \widehat\sigma_i^2 \rb^2
+        \\&= \underbrace{\frac{1}{n} \sum_{i = 1}^n \lb (X_i - \widehat\mu_i)^2 - \sigma^2 \rb^2}_{(I_n)} 
+        -  \underbrace{\frac{2}{n} \sum_{i = 1}^n \lb (X_i - \widehat\mu_i)^2 - \sigma^2 \rb \lp \sigma^2 - \widehat\sigma_i^2 \rp}_{(II_n)}
+        \\&\quad+ \underbrace{\frac{1}{n} \sum_{i = 1}^n \lp \sigma^2 - \widehat\sigma_i^2 \rp^2}_{(III_n)}.
+    \end{align*}
+    It suffices to prove that $(I_n)$ converges to $\V \lb(X-\mu)^2 \rb$ almost surely, and $(II_n)$ and $(III_n)$ converge to $0$ almost surely.
+    \begin{itemize}
+        \item Denoting $\gamma_i = (\mu - \widehat\mu_i)^2 + 2(X_i - \mu)(\mu - \widehat\mu_i)$, it follows that 
+        \begin{align*}
+            (I_n) &= \frac{1}{n} \sum_{i = 1}^n \lb (X_i - \mu + \mu - \widehat\mu_i)^2 - \sigma^2 \rb^2
+            \\&= \frac{1}{n} \sum_{i = 1}^n \lb (X_i - \mu)^2  - \sigma^2 + (\mu - \widehat\mu_i)^2 + 2(X_i - \mu)(\mu - \widehat\mu_i)\rb^2
+            \\&= \frac{1}{n} \sum_{i = 1}^n \lb (X_i - \mu)^2  - \sigma^2 +\gamma_i\rb^2
+            \\&= \frac{1}{n} \sum_{i = 1}^n \lb (X_i - \mu)^2  - \sigma^2\rb^2 + \frac{2}{n} \sum_{i = 1}^n \lb (X_i - \mu)^2  - \sigma^2\rb \gamma_i + \frac{1}{n} \sum_{i = 1}^n \gamma_i^2.
+        \end{align*}
+        The first of these three summands converges to $\V \lb(X-\mu)^2 \rb$ by the scalar martingale strong law of large numbers \citep[Theorem 2.1]{hall2014martingale}. 
+        Given that $\lp \widehat\mu_i - \mu \rp\to0$ almost surely, $\gamma_i\to0$ almost surely as well. Thus, the latter summands converge to $0$ almost surely: the second summand converges to $0$ in view of Lemma~\ref{lemma:average_of_converging_sequence} and the fact that the $(X_i - \mu)^2  - \sigma^2$ are bounded; the third summand converges to $0$ almost surely also in view of Lemma~\ref{lemma:average_of_converging_sequence}. 
+        
+        
+        \item Given that $\lb (X_i - \widehat\mu_i)^2 - \sigma^2 \rb$ is bounded and $\lp \sigma^2 - \widehat\sigma_i^2 \rp\to0$ almost surely, $(II_n)$ converges to $0$ almost surely by Lemma~\ref{lemma:average_of_converging_sequence}.
+        \item Given that  $\lp \sigma^2 - \widehat\sigma_i^2 \rp\to0$ almost surely, $\lp \sigma^2 - \widehat\sigma_i^2 \rp^2\to0$ almost surely, and so $(III_n)$ converges to $0$ almost surely by Lemma~\ref{lemma:average_of_converging_sequence}.
+    \end{itemize}
+    Thus,  $\tilde m_{4, n}^2 \to \V \lb(X-\mu)^2 \rb$ almost surely. Given that $\widehat m_{4, n}^2 = \frac{c_2}{n} + \frac{n-1}{n}\tilde m_{4, n-1}^2$, this also implies that $\widehat m_{4, n}^2 \to \V \lb(X-\mu)^2 \rb$ almost surely.
+    
+
+\subsection{Proof of Proposition~\ref{proposition:zero_fourth_moment_scales_as_one_over_upper_bound}} \label{proof:zero_fourth_moment_scales_as_one_over_upper_bound}
+
+ Denote $v_i = (X_i - \widehat\mu_i)^2 - \widehat\sigma_i^2 $, so that
+    \begin{align*}
+        m_{4, t}^2 = \frac{c_2 + \sum_{i \leq t-1} v_i^2}{t}.
+    \end{align*}
+    
+    If $\sigma^2 =  0$, then $X_i = \mu$ for all $i$. In that case, 
+    \begin{align*}
+        \widehat\mu_i = \frac{c_4}{i} + \frac{i-1}{i} \mu, \quad \widehat\sigma_i^2 = \frac{c_3}{i} + \frac{\lp c_4 - \mu \rp^2 \sum_{j\leq i-1}  \frac{1}{j^2}}{i}.
+    \end{align*}
+    Note that 
+    \begin{align*}
+        \widehat\sigma_i^2 \leq \frac{c_3}{i} + \frac{\lp c_4 - \mu \rp^2 \sum_{j= 1}^\infty   \frac{1}{j^2}}{i} = \frac{c_3 + \lp c_4 - \mu \rp^2 \frac{\pi^2}{6}}{i},
+    \end{align*}
+    and so
+    \begin{align*}
+        v_i^2 &= \lb \lp \frac{c_4 - \mu}{i}\rp^2 - \widehat\sigma_i^2 \rb^2
+        \\&\stackrel{(i)}{\leq} 2\lp \frac{c_4 - \mu}{i}\rp^4 + 2 \widehat\sigma_i^4
+        \\&\stackrel{}{\leq} 2 \frac{\lp c_4 - \mu \rp^4 }{i^2} + 2 \widehat\sigma_i^4
+        \\&\stackrel{}{\leq} \frac{\kappa_1}{i^2},
+    \end{align*}
+    where $\kappa_1 := 2\lp c_4 - \mu \rp^4 + 2 \lp c_3 + \lp c_4 - \mu \rp^2 \frac{\pi^2}{6} \rp^2$, and (i) follows from $(a - b)^2 \leq 2a^2 + 2b^2$. Thus
+    \begin{align*}
+         m_{4, t}^2 \leq \frac{c_2 + \sum_{i \leq t-1} \frac{\kappa_1}{i^2}}{t} \leq \frac{c_2 + \sum_{i=1}^\infty \frac{\kappa_1}{i^2}}{t} = \frac{c_2 + \frac{\kappa_1 \pi^2}{6}}{t} = \bigO \lp \frac{1}{t}\rp.
+    \end{align*} 
+
+    If $\sigma^2 >  0$, note that
+    \begin{align*}
+        v_i &=  (X_i - \widehat\mu_i)^2 - \widehat\sigma_i^2
+        \\&=  (X_i - \mu)^2 - \sigma^2 + 2(X_i - \mu)(\mu-\widehat\mu_i) + (\mu-\widehat\mu_i)^2 + \sigma^2 - \widehat\sigma_i^2
+        \\&\stackrel{(i)}{=} 2(X_i - \mu)(\mu-\widehat\mu_i) + (\mu-\widehat\mu_i)^2 + \sigma^2 - \widehat\sigma_i^2,
+    \end{align*}
+    where (i) follows from $(X_i - \mu)^2 = \sigma^2$, and so
+    \begin{align*}
+        \lba v_i \rba  &\leq  3\lba \mu-\widehat\mu_i \rba + \lba \sigma^2 - \widehat\sigma_i^2 \rba.
+    \end{align*}
+     The martingale analogue of Kolmogorov's law of iterated logarithm \citep{stout1970martingale} establishes that 
+    \begin{align*}
+        \limsup_{i \to \infty} |\widehat\mu_i - \mu|\frac{\sqrt n}{\sqrt{2 \sigma^2 \log \log \lp n \sigma^2 \rp }} = 1
+    \end{align*}
+    almost surely. That implies that there exists $A \in \F$ such that $P(A) = 1$ and, for all $\omega \in A$, 
+    \begin{align*}
+        |\widehat\mu_i(\omega) - \mu| \leq \sqrt {C(\omega) }\frac{\sqrt{2 \sigma^2 \log \log \lp i \sigma^2 \rp }}{\sqrt i}
+    \end{align*}
+    for some $C(\omega) < \infty$.
+    Furthermore, 
+    \begin{align*}
+        \widehat\sigma_i^2 &= \frac{c_3 + \sum_{j \leq i -1} \lp X_j - \bar\mu_j \rp^2}{i}
+        \\&= \frac{c_3 + \sum_{j \leq i -1} \lp X_j - \mu \rp^2 + 2\lp X_j - \mu \rp\lp \mu - \bar\mu_j \rp + \lp \mu - \bar\mu_j \rp^2}{i}
+        \\&= \frac{c_3 + \sum_{j \leq i -1} \lp X_j - \mu \rp^2 + 2\lp X_j - \mu \rp\lp \mu - \bar\mu_j \rp + \lp \mu - \bar\mu_j \rp^2}{i}
+        \\&\stackrel{(i)}{=} \frac{c_3}{i} + \frac{i-1}{i} \sigma^2 +  \frac{ \sum_{j \leq i -1} 2\lp X_j - \mu \rp\lp \mu - \bar\mu_j \rp + \lp \mu - \bar\mu_j \rp^2}{i},
+    \end{align*}
+    where (i) follows from $(X_i - \mu)^2 = \sigma^2$, and so 
+    \begin{align*}
+        \sigma^2 - \widehat\sigma_i^2 = \frac{\sigma^2}{i} -\frac{c_3}{i}   -  \frac{ \sum_{j \leq i -1} 2\lp X_j - \mu \rp\lp \mu - \bar\mu_j \rp + \lp \mu - \bar\mu_j \rp^2}{i},
+    \end{align*}
+    which implies
+    \begin{align*}
+        \lba \sigma^2 - \widehat\sigma_i^2 \rba &\leq  \frac{c_3}{i} + \frac{\sigma^2}{i}  + \lba \frac{ \sum_{j \leq i -1} 2\lp X_j - \mu \rp\lp \mu - \bar\mu_j \rp + \lp \mu - \bar\mu_j \rp^2}{i} \rba
+        \\&\leq  \frac{c_3}{i} + \frac{\sigma^2}{i}  + 3\frac{ \sum_{j \leq i -1} \lba \mu - \bar\mu_j \rba}{i}
+        \\&\stackrel{}{\leq}  \frac{2}{i}  + 3\frac{ \sum_{j \leq i -1} \lba \mu - \bar\mu_j \rba}{i}.
+    \end{align*}
+    Thus, for $\omega \in A$,
+    \begin{align*}
+        \lba v_i (\omega)\rba  &\leq  3\lba \mu-\widehat\mu_i (\omega)\rba + \lba \sigma^2 - \widehat\sigma_i^2(\omega) \rba
+        \\&\leq 3 \lba \mu-\widehat\mu_i(\omega) \rba + \frac{2}{i} + 3\frac{ \sum_{j \leq i -1} \lba \mu - \bar\mu_j (\omega) \rba}{i}
+        \\&\leq 3\frac{\sqrt{ 2C(\omega)  \sigma^2 \log \log \lp i \sigma^2 \rp }}{\sqrt i} + \frac{2}{i} + 3\frac{ \sum_{j \leq i -1} \sqrt{C(\omega)}\frac{\sqrt{2 \sigma^2 \log \log \lp j \sigma^2 \rp }}{\sqrt j}}{i}
+        \\&\leq 3\frac{\sqrt{2C(\omega) \sigma^2 \log \log \lp i \sigma^2 \rp }}{\sqrt i} + \frac{2}{i} + 3 \sqrt{2 C(\omega) \sigma^2 \log \log \lp i \sigma^2 \rp } \frac{ \sum_{j \leq i -1} \frac{1}{\sqrt j}}{i}
+        \\&\stackrel{(i)}{\leq} 3\frac{\sqrt{2C(\omega) \sigma^2 \log \log \lp i \sigma^2 \rp }}{\sqrt i} + \frac{2}{\sqrt{i}} + 6 \sqrt{2 C(\omega) \sigma^2 \log \log \lp i \sigma^2 \rp } \frac{1 }{\sqrt{i}}
+        \\&\stackrel{}{=} \lp 2 + 9 \sqrt{2 C(\omega) \sigma^2 \log \log \lp i \sigma^2 \rp }\rp \frac{1 }{\sqrt{i}},
+    \end{align*}
+    where (i) follows from Lemma~\ref{lemma:series_one_over_sqrt}.
+    Thus,
+    \begin{align*}
+        \lp v_i (\omega)\rp^2  &\leq \lp 2 + 9 \sqrt{2 C(\omega) \sigma^2 \log \log \lp i \sigma^2 \rp }\rp^2 \frac{1 }{i}.
+    \end{align*}
+    From here, it follows that, for $\omega \in A$,
+    \begin{align*}
+        m_{4, t}^2(\omega) &= \frac{c_2 + \sum_{i \leq t-1} v_i^2(\omega)}{t} 
+        \\&\leq \frac{c_2 + \sum_{i \leq t-1} \lp 2 + 9 \sqrt{2 C(\omega) \sigma^2 \log \log \lp i \sigma^2 \rp }\rp^2 \frac{1 }{i}}{t}
+        \\&\leq \frac{c_2 + \lp 2 + 9 \sqrt{2 C(\omega) \sigma^2 \log \log \lp t \sigma^2 \rp }\rp^2 \sum_{i \leq t-1}  \frac{1 }{i}}{t}
+        \\&\stackrel{(i)}{\leq} \frac{c_2 + \lp 2 + 9 \sqrt{2 C(\omega) \sigma^2 \log \log \lp t \sigma^2 \rp }\rp^2 \lp1 + \log t\rp}{t}
+        \\&= \tilde\bigO\lp\frac{1}{t}\rp,
+    \end{align*}
+    where (i) follows from Lemma~\ref{lemma:series_one_over}. Noting that $P(A) = 1$ concludes the result.
+
+
+\subsection{Proof of Proposition~\ref{proposition:zero_fourth_moment_scales_as_one_over_lower_bound}} \label{proof:zero_fourth_moment_scales_as_one_over_lower_bound}
+
+The proof follows analogously to that of Proposition~\ref{proposition:zero_fourth_moment_scales_as_one_over_upper_bound} as soon as we show that
+\begin{itemize}
+    \item if $\sigma=0$, then 
+    \begin{align*}
+        (X_i - \widehat\mu_i)^2 = 0; %\bigO \lp \frac{1}{i^2} \rp;
+    \end{align*}
+    \item if $\sigma>0$, then 
+    \begin{align*}
+        |\widehat\mu_i(\omega) - \mu| = \tilde \bigO \lp \frac{1}{\sqrt i}\rp
+    \end{align*}
+    almost surely.
+\end{itemize}
+Let us now prove each of the statements. 
+
+If $\sigma=0$, then
+\begin{align*}
+    \widehat\mu_t = \frac{\sum_{i=1}^{t-1} \tilde \lambda_i X_i}{\sum_{i=1}^{t-1} \tilde \lambda_i} = \frac{\sum_{i=1}^{t-1} \tilde \lambda_i \mu}{\sum_{i=1}^{t-1} \tilde \lambda_i} = \mu = X_i,
+\end{align*}
+and so $(X_i - \widehat\mu_i)^2 = 0$, and we are done.
+
+If $\sigma>0$, define
+\begin{align*}
+    \iota_i = \sqrt{\frac{2}{\widehat\sigma_i^2 i \log(i + 1)}}.
+\end{align*}
+We shall start by studying the growth of $\sum_{i\leq n} \iota_i X_i$. In view of
+\begin{align*}
+    \sum_{i = 1}^\infty \E_{i-1}\lb \iota_i^2(X_i - \mu)^2 \rb &= \sigma^2 \sum_{i = 1}^\infty \iota_i^2 =  \sigma^2 \sum_{i = 1}^\infty \frac{2}{\widehat\sigma_i^2 i \log(i + 1)} 
+    \\&\geq  2\sigma^2 \sum_{i = 1}^\infty \frac{1}{ i \log(i + 1)} \stackrel{(i)}{=} \infty,
+\end{align*}
+where (i) follows from Lemma~\ref{lemma:series_one_over_ilogi}, as well as $\lba \iota_i (X_i - \mu) \rba \leq \iota_i$ with $\iota_i \to 0$ almost surely, we can apply the martingale analogue of Kolmogorov's law of the iterated logarithm \citep{stout1970martingale}. Thus, defining
+\begin{align*}
+    S_n^2 := \sum_{i = 1}^n \E_{i-1}\lb \iota_i^2(X_i - \mu)^2 \rb  = \sigma^2 \sum_{i = 1}^n \iota_i^2,
+\end{align*}
+it follows that
+\begin{align*}
+    \limsup_{n \to \infty} \frac{\sum_{i \leq n} \iota_i (X_i - \mu)}{\sqrt{2 S_n^2 \log\log (S_n^2)}} = 1
+\end{align*}
+almost surely. Hence, there exists $A_1 \in \F$ with $P(A_1) = 1$ such that
+\begin{align*}
+     \lba \sum_{i \leq n} \iota_i(\omega) (X_i(\omega) - \mu) \rba \leq C(\omega) \sqrt{2 S_n^2 \log\log (S_n^2)}
+\end{align*}
+for all $\omega \in A_1$. Given that $\widehat\sigma_n \to \sigma$ almost surely, there exists $A_2 \in \F$ with $P(A_2) = 1$ such that $\widehat\sigma_n(\omega) \to \sigma$. Hence, for each $\omega \in A_2$, there exists $m(\omega)\in\Nb$ such that $\widehat\sigma_i \geq \frac{\sigma}{2}$ for all $i \geq m(\omega)$. Thus, for $\omega \in A_2$,
+\begin{align*}
+    S_n^2(\omega) &= \sigma^2 \sum_{i = 1}^n \frac{2}{\widehat\sigma_i^2(\omega) i \log(i + 1)}
+    \\&\leq \sum_{i = 1}^n \frac{8}{ i \log(i + 1)}
+    \\&\leq \sum_{i = 1}^n \frac{16}{i}
+    \\&\stackrel{(i)}{\leq} 16(\log n + 1),
+\end{align*}
+ where (i) is obtained in view of Lemma~\ref{lemma:series_one_over}. Hence, for $\omega \in A:= A_1 \cap A_2$,
+ \begin{align*}
+     \lba \sum_{i \leq n} \iota_i(\omega) (X_i(\omega) - \mu) \rba \leq C(\omega) \sqrt{32(\log n + 1)\log\log (16(\log n + 1))},
+\end{align*}
+which is $\tilde\bigO(1)$. That is, $ \sum_{i \leq n} \iota_i (X_i - \mu) = \tilde\bigO(1)$ almost surely. Let us now show that
+\begin{align} \label{eq:numerator_tilde_bigo_1}
+     \lba \sum_{i \leq n} \tilde \lambda_{i, \alpha_{1, n}} (X_i - \mu) \rba = \tilde\bigO(1)
+\end{align}
+almost surely as well. For $i \geq m(\omega)$,
+\begin{align*}
+    \sqrt{\frac{2 \log (2 / \alpha_{1, n})}{\widehat\sigma_i^2 i \log(i + 1)}} \leq \frac{\sigma}{\sqrt{2}} \sqrt{\frac{\log (2 / \alpha_{1, n})}{i \log(i + 1)}}
+\end{align*}
+and so, for $i \geq m(\omega) \vee \sigma \sqrt{\log (2 / \alpha_{1, n})}c_5$, it holds that
+\begin{align*}
+    \tilde \lambda_{i, \alpha_{1, n}} = \sqrt{\log (2 / \alpha_{1, n})}\iota_i.
+\end{align*}
+Given that we will let $n$ tend to $\infty$, we can assume without loss of generality that $m(\omega) < \sigma \sqrt{\log (2 / \alpha_{1, n})}c_5  =: t_n$. In that case,
+\begin{align*}
+         \sum_{i \leq n} \tilde \lambda_{i, \alpha_{1, n}} (X_i - \mu) &= \sum_{i < t_n} \tilde \lambda_{i, \alpha_{1, n}} (X_i - \mu) + \sum_{i =t_n}^n \tilde \lambda_{i, \alpha_{1, n}} (X_i - \mu) 
+         \\&= \sum_{i < t_n} \tilde \lambda_{i, \alpha_{1, n}} (X_i - \mu) + \sqrt{\log (2 / \alpha_{1, n})} \sum_{i =t_n}^n \iota_i (X_i - \mu) 
+         \\&= \sum_{i < t_n} \lp \tilde \lambda_{i, \alpha_{1, n}} - \sqrt{\log (2 / \alpha_{1, n})} \iota_i \rp (X_i - \mu) 
+         \\&\quad+ \sqrt{\log (2 / \alpha_{1, n})} \sum_{i \leq n} \iota_i (X_i - \mu). 
+\end{align*}
+Now note that the absolute value of the first summand is upper bounded by
+\begin{align*}
+    \sum_{i < t_n} \lba \tilde \lambda_{i, \alpha_{1, n}} - \sqrt{\log (2 / \alpha_{1, n})} \iota_i \rba &\leq \sum_{i < t_n} \lba \tilde \lambda_{i, \alpha_{1, n}} - \sqrt{\log (2 / \alpha_{1, n})} \iota_i \rba  
+    \\&\leq  \sum_{i < t_n} \lp c_5 + \sqrt{\log (2 / \alpha_{1, n})} \sup_i \iota_i \rp.
+\end{align*}
+Given that $\iota_n \to 0$ almost surely and $c_2 > 0$, $\sup_i \iota_i$ is almost surely bounded, and thus such a first summand is upper bounded by
+\begin{align*}
+    t_n \lp c_5 + \sqrt{\log (2 / \alpha_{1, n})} \sup_i \iota_i \rp,
+\end{align*}
+which is also $\tilde\bigO\lp 1 \rp$ a.s., in view of $\log (1 / \alpha_{1, n}) = \tilde\bigO(1)$. Consequently, we have shown the validity of \eqref{eq:numerator_tilde_bigo_1}. Lastly, we observe that,
+\begin{align*}
+    \sum_{i \leq n}  \tilde \lambda_{i, \alpha_{1, n}} &= \sum_{i \leq n} \sqrt\frac{2\log(2/\alpha_{1, n})}{\widehat \sigma_{t}^2 i \log (1+i)} \wedge c_5
+    \\&\geq \frac{1}{\sqrt {\log (1+n)}} \sum_{i \leq n} \sqrt\frac{2\log(2/\alpha)}{ i } \wedge c_5
+    \\&\geq \frac{1}{\sqrt {\log (1+n)}} \lp \sqrt{2\log(2/\alpha)} \wedge c_5 \rp \sum_{i \leq n} \frac{1}{ \sqrt i }
+    \\&\stackrel{(i)}{\geq} \frac{1}{\sqrt {\log (1+n)}} \lp \sqrt{2\log(2/\alpha)} \wedge c_5 \rp \lp 2\sqrt{n} - 2\rp,
+\end{align*}
+which is $\tilde\Omega\lp \sqrt{n}\rp$,
+where (i) is obtained in view of Lemma~\ref{lemma:series_one_over_sqrt}. We thus conclude that
+\begin{align*}
+    \lba \widehat\mu_t - \mu \rba  = \lba \frac{\sum_{i=1}^{t-1} \tilde \lambda_i (X_i-\mu)}{\sum_{i=1}^{t-1} \tilde \lambda_i} \rba = \frac{\tilde \bigO \lp 1\rp}{\tilde \Omega(\sqrt{t})} = \tilde \bigO \lp \frac{1}{\sqrt t}\rp
+\end{align*}
+almost surely. 
+
+
+
+\subsection{Proof of Proposition~\ref{proposition:sum_lambda_rescaled_converges}} \label{proof:sum_lambda_rescaled_converges}
+
+Given that $m_{4, n}^2 \to V \lb (X_i-\mu)^2\rb$ a.s. (in view of Proposition~\ref{proposition:fourth_moment_as_convergence}), there exists $A \in \F$ such that $P(A) = 1$ and %Let $\lp \Omega, \mathcal{F}, P \rp$ be the probability space on which  $(X_n)_{n\geq1}$ are defined.
+    \begin{align*}
+        \widehat m_{4, n}^2(\omega) \to V \lb (X_i-\mu)^2\rb 
+    \end{align*}
+    for all $\omega \in A$. Based on Lemma~\ref{lemma:sequence_lower_bounded_almost_surely} and $c_2 > 0$, 
+    \begin{align*}
+        \frac{1}{\widehat m_{4, n}^2(\omega)} \leq u(\omega) < \infty
+    \end{align*}
+    for all $\omega \in A$. Given that $\delta_n \to \delta > 0$ and $\delta_n >0$, then $l := \inf_{n} \delta_n > 0$, and so we observe that
+    \begin{align*}
+        \sqrt\frac{2\log(1/\delta_n)}{\widehat m_{4, t}^2(\omega) n} \leq \sqrt\frac{2\log(1/l)}{u(\omega) n},
+    \end{align*}
+    which implies the existence of $m_\omega\in \Nb$ such that 
+    \begin{align*}
+        \sqrt\frac{2\log(1/l)}{u(\omega) n} \leq c_1
+    \end{align*}
+    for all $n \geq m_\omega$. Hence
+    \begin{align*}
+        \lambda_{t,\delta_n}(\omega) = \sqrt\frac{2\log(1/\delta_n)}{\widehat m_{4, t}^2(\omega) n}
+    \end{align*}
+    for $n \geq m_\omega$. It follows that
+    \begin{align*}
+        \frac{1}{\sqrt{n}} \sum_{i = 1}^n \lambda_{i,\delta_n}(\omega) = \frac{1}{\sqrt{n}} \sum_{i = 1}^{m_\omega - 1} \lambda_{i,\delta_n}(\omega) + \frac{1}{\sqrt{n}} \sum_{i = m_\omega}^n \lambda_{i,\delta_n}(\omega).
+    \end{align*}
+    Clearly, the first term converges to $0$, and so it suffices to show that
+    \begin{align*}
+        \frac{1}{\sqrt{n}} \sum_{i = m_\omega}^n \lambda_{i,\delta_n}(\omega) \stackrel{a.s.}{\to} \sqrt \frac{2 \log (1 / \delta)}{\V \lb (X_i-\mu)^2\rb}.
+    \end{align*}
+    To see this, note that
+    \begin{align*}
+        \frac{1}{\sqrt{n}} \sum_{i = m_\omega}^n \lambda_{i,\delta_n}(\omega) &= \frac{1}{\sqrt{n}} \sum_{i = m_\omega}^n \sqrt\frac{2\log(1/\delta_n)}{\widehat m_{4, i}^2(\omega) n}
+        \\&= \underbrace{\frac{n - m_\omega}{n}}_{(I_n)}\underbrace{ \frac{1}{n - m_\omega} \sum_{i = m_\omega}^n \sqrt\frac{2\log(1/\delta_n)}{\widehat m_{4, i}^2(\omega) }}_{(II_n(\omega))}.
+    \end{align*}
+    Clearly, $(I_n) \stackrel{n\to\infty}{\to} 1$. Furthermore,
+    \begin{align*}
+        (II_n(\omega)) \stackrel{n\to\infty}{\to} \sqrt \frac{2 \log (1 / \delta)}{\V \lb (X_i-\mu)^2\rb}
+    \end{align*}
+    in view of $m_{4, n}^2(\omega) \to V \lb (X_i-\mu)^2\rb$, $\delta_n \to \delta$, and Lemma~\ref{lemma:average_of_converging_sequence}. Hence
+    \begin{align*}
+        \frac{1}{\sqrt{n}} \sum_{i = m_\omega}^n \lambda_{i,\delta_n}^{\text{CI}}(\omega) \stackrel{n\to\infty}{\to} \sqrt \frac{2 \log (1 / \delta)}{\V \lb (X_i-\mu)^2\rb} 
+    \end{align*}
+    for $\omega \in A$, with $P(A) = 1$, thus concluding the proof.
+
+\subsection{Proof of Proposition~\ref{proposition:sum_psi_e_lambda_rescaled_converges}} \label{proof:sum_psi_e_lambda_rescaled_converges}
+
+ Analogously to the first part of the proof of Proposition~\ref{proposition:sum_lambda_rescaled_converges}, there exists $A\in\F$ such that $P(A) = 1$, %Let $\lp \Omega, \mathcal{F}, P \rp$ be the probability space on which  $(X_n)_{n\geq1}$ and $(Z_n)_{n\geq1}$ are defined. 
+    \begin{align} \label{eq:mhat_omega_converges}
+        \widehat m_{4, n}^2(\omega) \to V \lb (X_i-\mu)^2\rb \quad \forall \omega \in A, \quad \frac{1}{n} \sum_{i=1}^n Z_i(\omega) \stackrel{}{\to} a \quad \forall  \omega \in A,
+    \end{align}
+    and there exists $m_\omega$ such that
+    \begin{align*}
+        \lambda_{t,\delta_n}(\omega) = \sqrt\frac{2\log(1/\delta_n)}{\widehat m_{4, t}^2(\omega) n}
+    \end{align*}
+    for $n \geq m_\omega$ for all $\omega \in A$. Observing that
+    \begin{align*}
+         \sum_{i = 1}^n \psi_E \lp \lambda_{i,\delta_n}(\omega)\rp Z_i(\omega) = \underbrace{\sum_{i = 1}^{m_\omega-1} \psi_E \lp \lambda_{i,\delta_n}(\omega) \rp Z_i(\omega)}_{(I_n(\omega))} + 
+         \underbrace{\sum_{i = m_\omega}^n \psi_E \lp \lambda_{i,\delta_n}(\omega) \rp Z_i(\omega)}_{(II_n(\omega))},
+    \end{align*}
+    Clearly, $(I_n(\omega)) \to 0$ given that it is a linear combination of terms $\psi_E \lp \lambda_{i,\delta_n}(\omega) \rp$, with
+    \begin{align*}
+        \lambda_{i,\delta_n}(\omega) \stackrel{n\to\infty}{\searrow} 0, \quad \psi_E(\lambda) \stackrel{\lambda\to0}{\to} 0.
+    \end{align*}
+    Let us now prove that
+    \begin{align} \label{eq:lemma_convergence_sum_psi_step2}
+        (II_n(\omega)) \to \sqrt \frac{2 \log (1 / \delta)}{\V \lb (X_i-\mu)^2\rb},
+    \end{align}
+    for $\omega \in A$. Denoting $\psi_N(\lambda) = \frac{\lambda^2}{2}$, as well as
+    \begin{align*}
+        \xi_{n, i}(\omega) := \frac{\psi_E \lp \lambda_{i,\delta_n}(\omega)  \rp}{\psi_N \lp \lambda_{i,\delta_n}(\omega)  \rp},
+    \end{align*}
+    it follows that
+    \begin{align*}
+        (II_n(\omega)) &= \sum_{i = m_\omega}^n \psi_E \lp \lambda_{i,\delta_n}(\omega) \rp Z_i(\omega)
+        \\&= \sum_{i = m_\omega}^n \psi_N \lp \lambda_{i,\delta_n}(\omega) \rp \xi_{n, i}(\omega)  Z_i(\omega)
+        \\&= \frac{\log(1/\delta_n)  (n - m_\omega + 1)}{n} \frac{1}{n - m_\omega + 1}\sum_{i = m_\omega}^n \frac{1}{\widehat m_{4, i}^2(\omega)} \xi_{n, i}(\omega)  Z_i(\omega).
+    \end{align*}
+    In view of \eqref{eq:mhat_omega_converges}, Lemma~\ref{lemma:aibiab} yields 
+    \begin{align*}
+        \frac{1}{n - m_\omega + 1}\sum_{i = m_\omega}^n \frac{1}{\widehat m_{4, i}^2(\omega)}   Z_i(\omega) \to \frac{a}{V \lb (X_i-\mu)^2\rb}.  
+    \end{align*}
+    Noting that $\frac{\psi_E(\lambda)}{\psi_N(\lambda)} \stackrel{\lambda \to 0}{\to} 1$, $\lambda_{i,\delta_i}(\omega) \geq \lambda_{i,\delta_n}(\omega)$ for $n \geq i$, and 
+    \begin{align*}
+        \lim_{n\to\infty}\lambda_{n,\delta_n}(\omega) &= \lim_{n\to\infty}\sqrt\frac{2\log(1/\delta_n)}{\widehat m_{4, n}^2(\omega) n} 
+        \\&= \lim_{n\to\infty}\sqrt\frac{1}{ n}\lim_{n\to\infty}\sqrt\frac{2\log(1/\delta_n)}{\widehat m_{4, n}^2(\omega) } 
+        \\&= 0\sqrt\frac{2\log(1/\delta)}{V \lb (X_i-\mu)^2\rb}
+        \\&= 0,
+    \end{align*}
+    we observe that
+    \begin{align*}
+        \xi_{n, n}(\omega) \to 1, \quad  \xi_{i, i}(\omega) \geq \xi_{n, i} (\omega)\geq 1,
+    \end{align*} 
+    where the latter inequality follows from Lemma~\ref{lemma:psi_E_vs_psiN_increasing}. Invoking Lemma~\ref{lemma:anibiab} with
+    \begin{align*}
+        a_{n, i} = \xi_{n, i}(\omega), \quad b_i = \frac{1}{\widehat m_{4, i}^2(\omega)}   Z_i(\omega),
+    \end{align*}
+    it follows that
+    \begin{align*}
+        \frac{1}{n - m_\omega + 1}\sum_{i = m_\omega}^n \frac{1}{\widehat m_{4, i}^2(\omega)} \xi_{n, i}(\omega)  Z_i(\omega) \to \frac{a}{V \lb (X_i-\mu)^2\rb}.
+    \end{align*}
+    It suffices to observe that
+    \begin{align*}
+        \frac{\log(1/\delta_n)  (n - m_\omega + 1)}{n} \to  \log(1/\delta)
+    \end{align*}
+    to conclude the proof.
+
+\subsection{Proof of Proposition~\ref{proposition:sum_lambda_rescaled_converges_zero_fourth_moment}} \label{proof:sum_lambda_rescaled_converges_zero_fourth_moment}
+
+ In view Proposition~\ref{proposition:zero_fourth_moment_scales_as_one_over_upper_bound} or Proposition~\ref{proposition:zero_fourth_moment_scales_as_one_over_lower_bound}, there exists $A \in \F$ such that $P(A) = 1$ and % Let $\lp \Omega, \mathcal{F}, P \rp$ be the probability space on which  $(X_n)_{n\geq1}$ are defined.
+    \begin{align} \label{eq:lemma17or18}
+         m_{4, t}^2(\omega) = \tilde\bigO \lp \frac{1}{t}\rp
+    \end{align}
+    for all $\omega \in A$. For $\omega \in A$, it may be that
+    \begin{align} \label{eq:tmt_less_infty}
+        \limsup_{t \to \infty} t m_{4, t}^2(\omega) =: M < \infty
+    \end{align}
+    or 
+    \begin{align} \label{eq:tmt_infty}
+        \lim_{t \to \infty} t m_{4, t}^2(\omega) = \infty.
+    \end{align}
+    Denote $L:= \sup_{n\in\Nb} \delta_n$, as well as $\kappa:= \sqrt{\frac{2\log(1/L)}{M}} \wedge c_1$.  If \eqref{eq:tmt_less_infty} holds, then
+    \begin{align*}
+        \lambda_{t,\delta_n}(\omega) &= \sqrt\frac{2\log(1/\delta_n)}{\widehat m_{4, t}^2(\omega) n} \wedge c_1
+        \\&= \sqrt{\frac{2\log(1/\delta_n)}{\widehat m_{4, t}^2(\omega) t} \frac{t}{n}} \wedge c_1
+        \\&\geq \sqrt{\frac{2\log(1/L)}{M} \frac{t}{n}} \wedge c_1
+        \\&\stackrel{(i)}{\geq} \kappa \sqrt{ \frac{t}{n}}, 
+    \end{align*}
+    where (i) follows from $\frac{t}{n} \leq 1$. Thus
+    \begin{align*}
+        \frac{1}{\sqrt{n}} \sum_{i = 1}^n \lambda_{i,\delta_n}(\omega) &\geq  \frac{\kappa}{\sqrt{n}}\sum_{i = 1}^n \sqrt{ \frac{i}{n}}
+        \\&=  \frac{\kappa}{n}\sum_{i = 1}^n \sqrt{i}
+        \\&\stackrel{(i)}{\geq}  \frac{2\kappa}{3n}n^{\frac{3}{2}}
+        \\&\stackrel{}{=}  \frac{2\kappa}{3}n^{\frac{1}{2}},
+    \end{align*}
+    where (i) follows from Lemma~\ref{lemma:series_sqrt}.
+
+    If \eqref{eq:tmt_infty} holds, then there exists $m(\omega) \in \Nb$ such that, for $t \geq m(\omega)$, 
+    \begin{align*}
+        \widehat m_{4, t}^2 t \geq \frac{2\log(1/l)}{c_1^2},
+    \end{align*}
+    where $l = \inf_{n \in \Nb} \delta_n$, which is strictly positive given that $\delta_n \to \delta > 0$ and $\delta_n >0$. Thus
+    \begin{align*}
+        \sqrt\frac{2\log(1/\delta_n)}{\widehat m_{4, t}^2 n} \leq \sqrt\frac{2\log(1/l)}{\widehat m_{4, t}^2 t} \leq  c_1,
+    \end{align*}
+    and so
+    \begin{align*}
+        \lambda_{i,\delta_n}(\omega) =  \sqrt\frac{2\log(1/\delta_n)}{\widehat m_{4, t}^2 n}
+    \end{align*}
+    for $i \geq m(\omega)$. It follows that 
+    \begin{align*}
+        \frac{1}{\frac{1}{\sqrt{n}} \sum_{i = 1}^n \lambda_{i,\delta_n}(\omega)} &\leq \frac{1}{\frac{1}{\sqrt{n}} \sum_{i = m(\omega)}^n \lambda_{i,\delta_n}(\omega)}
+        \\&= \frac{n}{(n - m(\omega) + 1)\sqrt{2\log(1/\delta_n)}} \frac{n - m(\omega) + 1}{\sum_{i = m(\omega)}^n \frac{1}{\widehat m_{4, i}(\omega) }}
+        \\&\stackrel{(i)}{\leq} \underbrace{\frac{n}{(n - m(\omega) + 1)\sqrt{2\log(1/\delta_n)}}}_{(I_n(\omega))}\underbrace{\sqrt{\frac{\sum_{i = m(\omega)}^n \widehat m_{4, i}^2(\omega) }{(n - m(\omega) + 1)}}}_{(II_n(\omega))},
+    \end{align*}
+    where (i) follows from the harmonic-quadratic means inequality. Now note that
+    \begin{align*}
+        (I_n(\omega)) \stackrel{n\to\infty}{\to} \sqrt{2\log(1/\delta)}.
+    \end{align*}
+    In view of \eqref{eq:lemma17or18},
+    \begin{align*}
+        (II_n(\omega)) = \sqrt{\frac{\sum_{i = m(\omega)}^n \tilde\bigO \lp \frac{1}{i}\rp }{(n - m(\omega) + 1)}} = \tilde\bigO \lp \frac{1}{\sqrt{n}}\rp,
+    \end{align*}
+
+    We have shown that, regardless of \eqref{eq:tmt_less_infty} or \eqref{eq:tmt_infty} holding, 
+    \begin{align*}
+        \frac{1}{\frac{1}{\sqrt{n}} \sum_{i = 1}^n \lambda_{i,\delta_n}(\omega)} = \tilde\bigO \lp \frac{1}{\sqrt{n}}\rp
+    \end{align*}
+    for all $\omega \in A$. Given that $P(A) = 1$, the proof is concluded.
+
+    
+\subsection{Proof of Proposition~\ref{proposition:nasty_sum_scales_logarithmically}} \label{proof:nasty_sum_scales_logarithmically}
+
+
+We will conclude the proof in two steps. First, we will prove that
+\begin{align*}
+    (I_n) = \sup_{i\leq n}\lc \log(2/\alpha_{1,n}) + \sigma^2\sum_{k=1}^{i-1} \psi_P\lp\sqrt\frac{2\log(2/\alpha_{1,n})}{\widehat \sigma_{k}^2 k \log (1+k)} \wedge c_5\rp\rc^2
+\end{align*}
+scales polylogarithmically with $n$ almost surely. Second, we will show that 
+\begin{align*}
+    (II_n)=\sum_{i \leq n} \frac{1}{\lp \sum_{k=1}^{i-1} \sqrt\frac{2\log(2/\alpha_{1,n})}{\widehat \sigma_{k}^2 k \log (1+k)}\wedge c_5 \rp^2}
+\end{align*}
+also scales polylogarithmically with $n$ almost surely. Thus, by Hölder's inequality and these two steps, it will follow that 
+\begin{align} \label{eq:before_holder}
+    \sum_{i \leq n} \frac{\lc \log(2/\alpha_{1,n}) + \sigma^2\sum_{k=1}^{i-1} \psi_P\lp\sqrt\frac{2\log(2/\alpha_{1,n})}{\widehat \sigma_{k}^2 k \log (1+k)}\wedge c_5\rp\rc^2}{\lp \sum_{k=1}^{i-1} \sqrt\frac{2\log(2/\alpha_{1,n})}{\widehat \sigma_{k}^2 k \log (1+k)} \wedge c_5\rp^2}
+\end{align}
+scales logarithmically with $n$ almost surely. That is, it is $\tilde\bigO \lp 1\rp$ almost surely.
+
+\textbf{Step 1.} If $\sigma = 0$, then $(I_n) = \log^2(2/\alpha_{1,n})$, which scales at most logarithmically with $n$ given that $1/\alpha_{1, n} = O(\log n )$, which follows from $\alpha_{1, n} = \Omega \lp \frac{1}{\log(n)} \rp$. If $\sigma > 0$, then in view of $(a+b)^2 \leq 2a^2 + 2b^2$, it follows that
+\begin{align*}
+    (I_n) \leq \sup_{i \leq n} \lb 2\log^2(2/\alpha_{1,n}) + 2\sigma^4\lc\sum_{k=1}^{i-1} \psi_P\lp\sqrt\frac{2\log(2/\alpha_{1,n})}{\widehat \sigma_{k}^2 k \log (1+k)}\wedge c_5\rp\rc^2\rb.
+\end{align*}
+We observe that 
+\begin{align*}
+    \psi_P\lp\sqrt\frac{2\log(2/\alpha_{1,n})}{\widehat \sigma_{k}^2 k \log (1+k)}\wedge c_5\rp &\stackrel{}{\leq} \psi_P\lp\sqrt\frac{2\log(2/\alpha_{1,n})}{\widehat \sigma_{k}^2 k \log (1+k)}\rp
+    \\&\stackrel{(i)}{\leq}\lp \frac{1}{\sqrt{2k\log(1+k)}}\rp^2\psi_P\lp\sqrt\frac{4\log(2/\alpha_{1,n})}{\widehat \sigma_{k}^2 }\rp
+    \\&= \frac{1}{2k\log(1+k)} \psi_P\lp\sqrt\frac{4\log(2/\alpha_{1,n})}{\widehat \sigma_{k}^2 }\rp
+    \\&\stackrel{(ii)}{\leq} \frac{1}{2k\log(1+k)} \exp\lp\sqrt\frac{4\log(2/\alpha_{1,n})}{\widehat \sigma_{k}^2 }\rp
+     \\&\stackrel{}{\leq} \frac{1}{k} \exp\lp\sqrt\frac{4\log(2/\alpha_{1,n})}{\widehat \sigma_{k}^2 }\rp
+     \\&\stackrel{(iii)}{\leq} \frac{1}{k} \exp\lp\frac{4\log(2/\alpha_{1,n})}{\widehat \sigma_{k}^2 }\rp
+     \\&\stackrel{}{=} \frac{1}{k} \lc \frac{2}{\alpha_{1,n}}\rc^{\frac{4}{\widehat \sigma_{k}^2 }},
+\end{align*}
+where (i) follows from Lemma~\ref{lemma:psi_p_decoupled} and $2k \log(1 +k)\geq1$ for all $k \geq 1$, (ii) follows from $\psi_P(x) = \exp(x) - x - 1 \leq \exp(x)$ for all $x \geq 0$, and (iii) follows from $\widehat\sigma_{k} \in [0,1]$ and $\sqrt x \leq x$ for all $x \geq 1$.
+
+ Given Proposition~\ref{proposition:fourth_moment_as_convergence} and Lemma~\ref{lemma:sequence_lower_bounded_almost_surely} (in view of $c_3 > 0$), there exists $A \in \F$ such that $P(A) = 1$ and %Let $\lp \Omega, \mathcal{F}, P \rp$ be the probability space on which $(X_i)_{i \geq 1}$ is defined.
+\begin{align*}
+    \widehat\sigma_{k}^2(\omega) \to \sigma^2, \quad \inf_k \widehat\sigma_{k}(\omega) \geq \varkappa(\omega) > 0,
+\end{align*}
+for all $\omega \in A$. For $\omega \in A$ and $k \in \Nb$,
+\begin{align*}
+    \psi_P\lp\sqrt\frac{2\log(2/\alpha_{1,n})}{\widehat \sigma_{k}^2(\omega) k \log (1+k)}\rp &\leq \frac{1}{k} \lc \frac{2}{\alpha_{1,n}}\rc^{\frac{4}{ \varkappa^2(\omega) }}, 
+\end{align*}
+and so 
+\begin{align*}
+    \sup_{i \leq n}\sum_{k=1}^{i-1} \psi_P\lp\sqrt\frac{2\log(2/\alpha_{1,n})}{\widehat \sigma_{k}^2(\omega) k \log (1+k)}\rp &\leq \lc \frac{2}{\alpha_{1,n}}\rc^{\frac{4}{ \varkappa^2(\omega) }} \sum_{k=1}^{i-1} \frac{1}{k} 
+    \\&\stackrel{(i)}{\leq}\lc \frac{2}{\alpha_{1,n}}\rc^{\frac{4}{ \varkappa^2(\omega) }} \lp \log i + 1 \rp
+     \\&\stackrel{}{\leq}\lc \frac{2}{\alpha_{1,n}}\rc^{\frac{4}{ \varkappa^2(\omega) }} \lp \log n + 1 \rp,
+\end{align*}
+where (i) is obtained in view of Lemma~\ref{lemma:series_one_over}. Thus
+\begin{align*}
+    \lp I_n(\omega) \rp \leq 2\log^2(2/\alpha_{1,n}) + \lc \frac{2}{\alpha_{1,n}}\rc^{\frac{4}{ \varkappa^2(\omega) }} \lp \log n + 1 \rp,
+\end{align*}
+which scales polinomially with $\log n$ in view of $1/\alpha_{1, n} = O(\log n )$. 
+
+
+\textbf{Step 2.} Denoting $\kappa = \sqrt{4 \log (2 / \alpha)} \wedge c_5$, it follows that
+\begin{align*}
+     \sum_{k=1}^{i-1} \sqrt\frac{2\log(2/\alpha_{1,n})}{\widehat \sigma_{k}^2 k \log (1+k)} \wedge c_5 &\geq \sum_{k=1}^{i-1} \sqrt\frac{2\log(2/\alpha)}{k \log (1+k)} \wedge c_5
+     \\&\stackrel{(i)}{\geq}\kappa\sum_{k=1}^{i-1} \sqrt\frac{1}{2k \log (1+k)}
+     \\&= \frac{\kappa}{\sqrt{2}}\sum_{k=1}^{i-1} \sqrt\frac{1}{k \log (1+k)}
+     \\&\geq \frac{\kappa}{\sqrt{2 \log (i)}}\sum_{k=1}^{i-1} \sqrt\frac{1}{k }
+     \\&\stackrel{(ii)}{\geq} \frac{2\kappa}{\sqrt{2 \log (i)}} \lb (\sqrt{i-1} - 1) \vee 1 \rb,
+\end{align*}
+where (i) follows from $2k \log (1+k) \geq 1$ for $k \geq 1$, and (ii) is obtained in view of Lemma~\ref{lemma:series_one_over_sqrt}. It follows that 
+\begin{align*}
+     (II_n) &\leq \sum_{2\leq i \leq n} \frac{\frac{2 \log (i)}{\kappa^2}}{\lb (\sqrt{i-1} - 1) \vee 1 \rb^2}  
+     \\&\leq \frac{2 \log (n)}{\kappa^2} \sum_{2\leq i \leq n} \frac{1}{\lb (\sqrt{i-1} - 1) \vee 1 \rb^2}  
+     \\&= \frac{2 \log (n)}{\kappa^2} \lp 2+ \sum_{4\leq i \leq n} \frac{1}{(\sqrt{i-1} - 1)^2}  \rp  
+     \\&\stackrel{(i)}{\leq} \frac{2 \log (n)}{\kappa^2} \lp 2+ \sum_{4\leq i \leq n} \frac{9}{i}  \rp  
+     \\&\stackrel{}{\leq} \frac{2 \log (n)}{\kappa^2} \lp 2+ \sum_{2\leq i \leq n} \frac{9}{i}  \rp 
+    \\&\stackrel{(ii)}{\leq} \frac{2 \log (n)}{\kappa^2} \lp 2+ 9 \log n  \rp,
+\end{align*}
+where (i) follows from $\sqrt{i-1} - 1 \geq \frac{\sqrt i}{3}$ for all $i \geq 4$, and (ii) follows from Lemma~\ref{lemma:series_one_over}. Thus, $(II_n)$ also scales polylogarithmically with $n$.
+
+

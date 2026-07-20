@@ -1,0 +1,222 @@
+%%%%%%%% ICML 2026 EXAMPLE LATEX SUBMISSION FILE %%%%%%%%%%%%%%%%%
+
+\documentclass{article}
+
+% My commands
+\newcommand{\Pb}{\mathbb{P}}
+\newcommand{\Nb}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand{\bigOmega}{\mathcal{\Omega}}
+\newcommand{\Hh}{\mathcal{H}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\wealth}{\mathcal{K}}
+\newcommand{\payoff}{\mathcal{S}}
+\newcommand{\defined}{:=}
+\newcommand{\lp}{\left(}
+\newcommand{\rp}{\right)}
+\newcommand{\lc}{\left\{}
+\newcommand{\rc}{\right\}}
+\newcommand{\lb}{\left[}
+\newcommand{\rb}{\right]}
+\newcommand{\rba}{\right|}
+\newcommand{\lba}{\left|}
+\newcommand{\rdba}{\right\|}
+\newcommand{\ldba}{\left\|}
+\newcommand{\ra}{\right\rangle}
+\newcommand{\la}{\left\langle}
+\newcommand{\cas}{\stackrel{a.s.}{\to}}
+\newcommand{\pe}{\psi_E}
+\newcommand{\pel}{\psi_E(\lambda)}
+\newcommand{\ind}{\mathds{1}} %\mathbbm{1}
+\newcommand{\varvar}{\sigma^2_{\sigma^2}}
+
+% Recommended, but optional, packages for figures and better typesetting:
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{booktabs} % for professional tables
+
+% hyperref makes hyperlinks in the resulting PDF.
+% If your build breaks (sometimes temporarily if a hyperlink spans a page)
+% please comment out the following usepackage line and replace
+% \usepackage{icml2026} with \usepackage[nohyperref]{icml2026} above.
+\usepackage{hyperref}
+
+
+% Attempt to make hyperref and algorithmic work together better:
+\newcommand{\theHalgorithm}{\arabic{algorithm}}
+
+% Use the following line for the initial blind version submitted for review:
+% \usepackage{icml2026}
+
+% For preprint, use
+%\usepackage[preprint]{icml2026}
+
+% If accepted, instead use the following line for the camera-ready submission:
+\usepackage[accepted]{icml2026}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsthm}
+
+
+% if you use cleveref..
+\usepackage[capitalize,noabbrev]{cleveref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THEOREMS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Todonotes is useful during development; simply uncomment the next line
+%    and comment out the line below the next line to turn off comments
+%\usepackage[disable,textsize=tiny]{todonotes}
+\usepackage[textsize=tiny]{todonotes}
+
+% The \icmltitle you define below is probably too long as a header.
+% Therefore, a short form for the running title is supplied here:
+\icmltitlerunning{Sharp Empirical Bernstein Inequalities for the Variance of Bounded Random Variables}
+
+\begin{document}
+
+\twocolumn[
+  \icmltitle{Sharp Empirical Bernstein Inequalities for \\ the Variance of Bounded Random Variables}
+
+  % It is OKAY to include author information, even for blind submissions: the
+  % style file will automatically remove it for you unless you've provided
+  % the [accepted] option to the icml2026 package.
+
+  % List of affiliations: The first argument should be a (short) identifier you
+  % will use later to specify author affiliations Academic affiliations
+  % should list Department, University, City, Region, Country Industry
+  % affiliations should list Company, City, Region, Country
+
+  % You can specify symbols, otherwise they are numbered in order. Ideally, you
+  % should not use this facility. Affiliations will be numbered in order of
+  % appearance and this is the preferred way.
+  \icmlsetsymbol{equal}{*}
+
+  \begin{icmlauthorlist}
+    \icmlauthor{Diego Martinez-Taboada}{yyy}
+    \icmlauthor{Aaditya Ramdas}{yyy,comp}
+    % \icmlauthor{Firstname3 Lastname3}{comp}
+    % \icmlauthor{Firstname4 Lastname4}{sch}
+    % \icmlauthor{Firstname5 Lastname5}{yyy}
+    % \icmlauthor{Firstname6 Lastname6}{sch,yyy,comp}
+    % \icmlauthor{Firstname7 Lastname7}{comp}
+    % %\icmlauthor{}{sch}
+    % \icmlauthor{Firstname8 Lastname8}{sch}
+    % \icmlauthor{Firstname8 Lastname8}{yyy,comp}
+    % %\icmlauthor{}{sch}
+    % %\icmlauthor{}{sch}
+  \end{icmlauthorlist}
+
+  \icmlaffiliation{yyy}{Department of Statistics \& Data Science, Carnegie Mellon University, Pittsburgh, United States}
+  \icmlaffiliation{comp}{Machine Learning Department, Carnegie Mellon University, Pittsburgh, United States}
+
+  \icmlcorrespondingauthor{Diego Martinez-Taboada}{diegomar@andrew.cmu.edu}
+
+  % You may provide any keywords that you find helpful for describing your
+  % paper; these are used to populate the "keywords" metadata in the PDF but
+  % will not be shown in the document
+  \icmlkeywords{Machine Learning, ICML}
+
+  \vskip 0.3in
+]
+
+% this must go after the closing bracket ] following \twocolumn[ ...
+
+% This command actually creates the footnote in the first column listing the
+% affiliations and the copyright notice. The command takes one argument, which
+% is text to display at the start of the footnote. The \icmlEqualContribution
+% command is standard text for equal contribution. Remove it (just {}) if you
+% do not need this facility.
+
+% Use ONE of the following lines. DO NOT remove the command.
+% If you have no special notice, KEEP empty braces:
+\printAffiliationsAndNotice{}  % no special notice (required even if empty)
+% Or, if applicable, use the standard equal contribution text:
+% \printAffiliationsAndNotice{\icmlEqualContribution}
+
+\begin{abstract}
+  We develop novel ``empirical Bernstein'' inequalities for the variance of bounded random variables. Our inequalities hold under constant conditional variance and mean, without further assumptions like independence or identical distribution of the random variables, making them suitable for sequential decision making contexts. The results are instantiated for both the batch setting (where the sample size is fixed) and the sequential setting (where the sample size is a stopping time). Our bounds are asymptotically ``sharp'': when the data are iid, our CI adapts optimally to both unknown mean $\mu$ and unknown $\mathbb{V}[(X-\mu)^2]$, meaning that the first order term of our CI \emph{exactly} matches that of the oracle Bernstein inequality which knows those quantities. We compare our results to a widely used (non-sharp) concentration inequality for the variance based on self-bounding random variables, showing both the theoretical gains and improved empirical performance of our approach. We finally extend our methods to work in any separable Hilbert space.
+\end{abstract}
+
+
+
+
+
+
+
+
+
+\input{introduction}
+\input{related_work}
+\input{background}
+\input{main_results}
+\input{experiments}
+\input{conclusion}
+
+% Acknowledgements should only appear in the accepted version.
+\section*{Acknowledgements}
+
+DMT thanks Ben Chugg, Ojash Neopane, and Tomás González for insightful conversations. DMT gratefully
+acknowledges that the project that gave rise to these results received the support of a fellowship
+from ‘la Caixa’ Foundation (ID 100010434). The fellowship code is LCF/BQ/EU22/11930075. 
+AR was funded by NSF grant DMS-2310718.
+
+\section*{Impact Statement}
+
+This paper presents work whose goal is to advance the field of Machine
+Learning. There are many potential societal consequences of our work, none
+which we feel must be specifically highlighted here.
+
+\bibliography{bib}
+\bibliographystyle{icml2026}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% APPENDIX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\appendix
+\onecolumn
+
+\input{appendix_outline}
+
+\input{extension_hs}
+
+\input{proofs}
+
+\input{alternative_approaches}
+
+\end{document}
+
+% This document was modified from the file originally made available by
+% Pat Langley and Andrea Danyluk for ICML-2K. This version was created
+% by Iain Murray in 2018, and modified by Alexandre Bouchard in
+% 2019 and 2021 and by Csaba Szepesvari, Gang Niu and Sivan Sabato in 2022.
+% Modified again in 2023 and 2024 by Sivan Sabato and Jonathan Scarlett.
+% Previous contributors include Dan Roy, Lise Getoor and Tobias
+% Scheffer, which was slightly modified from the 2010 version by
+% Thorsten Joachims & Johannes Fuernkranz, slightly modified from the
+% 2009 version by Kiri Wagstaff and Sam Roweis's 2008 version, which is
+% slightly modified from Prasad Tadepalli's 2007 version which is a
+% lightly changed version of the previous year's version by Andrew
+% Moore, which was in turn edited from those of Kristian Kersting and
+% Codrina Lauth. Alex Smola contributed to the algorithmic style files.

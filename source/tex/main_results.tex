@@ -1,0 +1,258 @@
+
+\section{Main Results} \label{section:main_results}
+We are now ready to derive novel confidence intervals and sequences for the variance of bounded random variables under Assumption~\ref{ass:main_assumption}. Two natural methodological strategies arise. The first constructs confidence intervals by applying concentration inequalities for the variance to an empirical variance estimator, itself centered around an empirical estimator for the mean. For lower confidence intervals, the concentration guarantee cannot be invoked directly unless we also account for uncertainty in the empirical mean. This is the approach adopted in this work. Motivated by the strong empirical performance of the empirical Bernstein inequalities for the mean of bounded data, we develop another of these inequalities to control the empirical variance. Remarkably, for lower confidence intervals we demonstrate that empirical concentration inequalities for the mean are unnecessary: we can construct confidence intervals for the mean that scale linearly with the the square root of the true variance (without needing to estimate it) by solving a quadratic equation. Further details follow in the subsequent exposition. 
+ 
+The second strategy is to express the variance as $\sigma^2 = E_{t-1} X_t^2 - \mu^2$, where by Assumption~\ref{ass:main_assumption} the conditional expectation remains constant across time. Moreover, since $X_t \in [0,1]$, the squared observations also lie in the unit interval, allowing the application of concentration inequalities for bounded variables to both the mean and the second moment; these bounds can then be combined via the union bound. However, as demonstrated in Appendix~\ref{section:naive_approach_two_eb}, this strategy yields inferior theoretical and empirical performance relative to the first approach. Intuitively, the performance gap stems from $\mathbb{V} (X-\mu)^2 \leq \mathbb{V} X^2$ (our method achieves the smaller variance).
+
+
+
+
+% We devote this section to presenting novel empirical Bernstein bounds for the variance under Assumption~\ref{ass:main_assumption}. 
+The section is organized as follows. In Section~\ref{section:supermartingale_construction}, we present the theoretical foundation of all the inequalities derived thereafter, namely a novel nonnegative supermartingale construction and its corollary.  Section~\ref{section:upper_bound} and Section~\ref{section:lower_bound} make use of such theoretical tools to derive upper and lower confidence sequences, respectively. In particular, the latter (Section~\ref{section:lower_bound}) makes essential use of an auxiliary Bennett-type concentration inequality for the estimator of the mean. Section~\ref{section:ci} instantiates such confidence sequences in the (more classical) batch setting, where they reduce to confidence intervals. We defer an extension of the results to Hilbert spaces to Appendix~\ref{section:extension_hs}.  % Lastly, Section~\ref{section:hs} extends these results to Hilbert spaces. %, with the latter making essential use of an auxiliary Bennett-type concentration inequality for the empirical mean
+
+\subsection{A Nonnegative Supermartingale Construction} \label{section:supermartingale_construction}
+
+We begin by introducing two nonnegative supermartingale constructions that serve as the theoretical foundation for the inequalities derived in this work; these nonnegative supermartingales will lead to concentration bounds when in conjunction with Ville's inequality.  Its proof may be found in Appendix~\ref{proof:main_supermartingale_theorem}.
+\begin{theorem} \label{theorem:main_supermartingale_theorem}
+    Let Assumption~\ref{ass:main_assumption} hold. For a $[0, 1]$-valued predictable sequence $(\widehat\mu_i)_{i \geq 1}$, denote
+    \begin{align*}
+        \tilde\sigma_i^2 = \sigma^2 + (\widehat\mu_i - \mu)^2.
+    \end{align*}
+    For any $[0, 1]$-valued predictable sequence  $(\widehat\sigma_i)_{i \geq 1}$ and any $[0, 1)$-valued predictable sequence  $(\lambda_i)_{i \geq 1}$, the processes $(S_t^+)_{t\geq0}$ and $(S_t^-)_{t\geq0}$, with $S_0^+ := 1$, and $S_0^- := 1$, and
+    \begin{align*}
+        S_t^{\pm} := \exp \Bigg\{ &\sum_{i_\leq t} \pm \lambda_i \lb  (X_i - \widehat\mu_i)^2 - \tilde\sigma_i^2  \rb
+        \\ & - \psi_E(\lambda_i) \lb (X_i - \widehat\mu_i)^2 - \widehat \sigma_i^2 \rb^2 \Bigg\}, \quad t\geq1,
+        %\\S_t^{-} &:= \exp \lc \sum_{i_\leq t} \lambda_i \lb \tilde\sigma_i^2  - (X_i - \widehat\mu_i)^2  \rb - \psi_E(\lambda_i) \lb (X_i - \widehat\mu_i)^2 - \widehat \sigma_i^2 \rb^2 \rc, \quad t\geq1,
+    \end{align*}
+    % \exp \lc \sum_{i_\leq t} \lambda_i \lb \pm (X_i - \widehat\mu_i)^2 \mp \tilde\sigma_i^2  \rb - \psi_E(\lambda_i) \lb (X_i - \widehat\mu_i)^2 - \widehat \sigma_i^2 \rb^2 \rc, \quad t\geq1,
+    are nonnegative supermartingales.
+\end{theorem}
+Theorem~\ref{theorem:main_supermartingale_theorem} modifies the supermartingales that give way to Theorem~\ref{theorem:empirical_bernstein_ian}. However, in contrast to Theorem~\ref{theorem:empirical_bernstein_ian}, the conditional means of the random variables $(X_i - \widehat\mu_i)^2$ under study are not constant. For this reason, the analysis is more convoluted in our setting. Hence, in order to provide concentration results for the variance, we denote
+\begin{align*}
+    R_{t, \alpha} &:= \frac{\log(1/\alpha) + \sum_{i \leq t}\psi_E(\lambda_i) \lp (X_i - \widehat\mu_i)^2 - \widehat \sigma_i^2 \rp^2}{\sum_{i \leq t} \lambda_i},
+    \\  D_t &:= \frac{\sum_{i \leq t}\lambda_i (X_i - \widehat\mu_i)^2}{\sum_{i \leq t} \lambda_i}, \quad E_t :=  \frac{\sum_{i \leq t} \lambda_i (\widehat\mu_i - \mu)^2}{\sum_{i \leq t} \lambda_i},
+\end{align*}
+where $D_t$ and $R_{t, \alpha}$ will represent the center and radius of the confidence interval (respectively), and $E_t$ an extra term that appears due to the mean estimator error. The following corollary is a direct consequence of Theorem~\ref{theorem:main_supermartingale_theorem}, as a result of applying Ville's inequality to the nonnegative supermartingales. We defer its proof to Appendix~\ref{proof:main_corollary}.
+\begin{corollary} \label{corollary:main_corollary}
+    Let Assumption~\ref{ass:main_assumption} hold.  For any $[0, 1)$-valued predictable sequence $(\lambda_i)_{i \geq 1}$ and any $[0, 1]$-valued predictable sequences $(\widehat\mu_i)_{i \geq 1}$ and $(\widehat\sigma_i)_{i \geq 1}$, it holds that
+    \begin{align*}
+    \lp D_t -  E_t \pm R_{t, \frac{\alpha}{2}}\rp
+\end{align*}
+is a $1-\alpha$ confidence sequence for $\sigma^2$.
+\end{corollary}
+The confidence sequence provided by Corollary~\ref{corollary:main_corollary} cannot be invoked in practice: since $\mu$ is unknown, $E_t$ is also unknown.
+
+\subsection{Upper Confidence Sequence for the Variance} \label{section:upper_bound}
+
+In spite of $E_t$ being unknown, this term poses no challenge for the upper confidence sequence, as we can simply lower bound it by $0$. That is, if $[0, D_t - E_t + R_{t, \alpha})$ is an $\alpha$-level upper confidence sequence for the variance, so is $[0, D_t + R_{t, \alpha})$, given that $E_t$ is nonnegative. We formalize such an observation in the following corollary. %  Note that this is rather intuitive: if we fail at estimating $\mu$ via $\widehat\mu_i$, we are effectively inflating $(X_i - \widehat\mu_i)^2$ with respect to $(X_i - \mu)^2$ in expectation. If seeking an upper confidence sequence, we can simply ignore this inflation, which yields the following corollary.
+\begin{corollary} [Upper empirical Bernstein for the variance] \label{corollary:upper_bound}
+    Let Assumption~\ref{ass:main_assumption} hold.  For any $[0, 1]$-valued predictable sequences $(\widehat\mu_i)_{i \geq 1}$ and $(\widehat\sigma_i)_{i \geq 1}$, and any $[0, 1)$-valued predictable sequence $(\lambda_i)_{i \geq 1}$, it holds that $\lb 0, U_t\rp$ is a $1-\alpha$ upper confidence sequence for $\sigma^2$, where
+    \begin{align*}
+        U_t = D_t+ R_{t, \alpha}.
+    \end{align*}
+\end{corollary}
+
+
+
+It remains to discuss the choice of predictable sequences. We suggest to take
+\begin{align*}
+    \widehat\sigma_{t}^2 &:= \frac{c_3 + \sum_{i \leq t-1} (X_i - \bar\mu_i)^2}{t}, \quad \bar\mu_t := \frac{c_4 + \sum_{i\leq t-1}X_i}{t},
+\end{align*}
+where $c_3, c_4 \in [0,1]$ are constant, as well as $\widehat\mu_t = \bar\mu_t$. These specific choices are only proposed due to their computational simplicity; but our upper bound holds for any other choice of mean and variance estimator.
+
+
+Following the discussion from \citet[Section 3.3]{waudby2024estimating} for confidence sequences, we propose to take the predictable plug-ins
+\begin{align*}
+    \lambda_{t, u, \alpha}^{\text{CS}} &:= \sqrt\frac{2\log(1/\alpha)}{\widehat m_{4, t}^2 t \log (1+t)} \wedge c_1
+\end{align*}
+where  
+\begin{align*}
+    \widehat m_{4, t}^2 &:= \frac{c_2 + \sum_{i \leq t-1} \lb (X_i - \widehat\mu_i)^2 - \widehat\sigma_i^2 \rb^2 }{t}, 
+\end{align*}
+with $c_1 \in (0,1)$, and $c_2 \in [0,1]$. Reasonable defaults are $c_1 = \frac{1}{2}$, $c_2 = \frac{1}{2^4}$, $c_3 = \frac{1}{2^2}$, and $c_4 = \frac{1}{2}$. The values  $c_2-c_4$  regularize the mean and variance estimators, so their impact decays considerably fast. Similarly to \citet{waudby2024estimating}, the constant $c_1$ prevents the predictable sequence from exploding, and the performance is not highly affected by choices that are not too close to $1$.
+
+
+
+
+\subsection{Lower Confidence Sequence for the Variance} \label{section:lower_bound}
+In order to provide a lower confidence sequence, we must control the term $E_t$, which depends on the terms $|\mu-\widehat\mu_i|$, with $i \leq t$. This can be done if $(\widehat\mu_t)_{t \geq 1}$ is such that a confidence sequence for $|\widehat\mu_i - \mu|$ can be provided (we ought to use confidence sequences instead of confidence intervals in order to avoid union bounding over all $i \leq t$). If $|\widehat\mu_i - \mu| \leq \tilde R_{i, \alpha_1}$ for all $i \geq 1$ with probability $1-\alpha_1$, then
+\begin{align} \label{eq:lower_bound_with_lambdas}
+    D_t - \frac{\sum_{i \leq t}\lambda_i \tilde R_{i, \alpha_1}^2}{\sum_{i \leq t} \lambda_i} -  R_{t, \alpha_2}
+\end{align}
+yields a $(1-\alpha)$-lower confidence sequence for $\sigma^2$ with $\alpha_1 + \alpha_2 = \alpha$. 
+
+
+
+
+Naturally, we aim for $\tilde R_{i,\alpha_1}$ to be as small as possible. Given the strong practical performance of empirical Bernstein inequalities, one might initially consider selecting yet another such inequality for $\mu$ in order to derive $\tilde R_{i,\alpha_1}$. However, a better approach is available. If $\tilde R_{i,\alpha_1}$ depends linearly on $\sigma$, we can obtain a closed-form confidence interval for $\sigma$ by solving a quadratic equation. In particular, we may combine the empirical mean in conjunction with the oracle Bennett inequality to yield closed-form confidence intervals. Although alternative options exist, such as \citet[Theorem~1]{lee2022optimal}, we favor the theoretical Bennett inequality because it yields explicit and small constants (unlike e.g. the aforementioned alternative). Furthermore, the theoretical Bennett inequality used holds with anytime validity and under martingale dependence. We also deliberately avoid betting-based approaches, as our goal is to obtain closed-form confidence intervals. 
+
+
+
+
+In particular, we propose to obtain $ \tilde R_{i, \delta}$ based on the anytime valid Bennett's inequality presented in Theorem~\ref{theorem:bennett_anytimevalid}. That is, take 
+\begin{align} \label{eq:widehat_mu_definition}
+    \widehat\mu_t = \frac{\sum_{i=1}^{t-1} \tilde \lambda_i X_i}{\sum_{i=1}^{t-1} \tilde \lambda_i}, \; \tilde R_{t, \alpha_1} = \frac{\log(2/\alpha_1) + \sigma^2\sum_{i=1}^{t-1} \psi_P(\tilde \lambda_i)}{\sum_{i=1}^{t-1} \tilde \lambda_i}, 
+\end{align}
+for $t \geq 2$, as well as $\widehat\mu_1 = \frac{1}{2}$ and $\tilde R_{1, \alpha_1} = \frac{1}{2}$. Substituting \eqref{eq:widehat_mu_definition} in \eqref{eq:lower_bound_with_lambdas} leads to a quadratic polynomial on $\sigma^2$. Equaling $\sigma^2$ to such a polynomial and solving for $\sigma^2$ yields our lower confidence sequence. In order to formalize this, denote
+\begin{align*}
+    \tilde C^{(2)}_{t} &:= \frac{\lp \sum_{i=1}^{t-1} \psi_P(\tilde \lambda_i)\rp^2}{\lp \sum_{i=1}^{t-1} \tilde \lambda_i \rp^2}, 
+    \quad \tilde C^{(0)}_{t, \delta}:= \frac{\log^2(2/\delta) }{\lp \sum_{i=1}^{t-1} \tilde \lambda_i \rp^2},
+    \\ \tilde C^{(1)}_{t, \delta} &:= \frac{2\log(2/\delta)\sum_{i=1}^{t-1} \psi_P(\tilde \lambda_i)}{\lp \sum_{i=1}^{t-1} \tilde \lambda_i \rp^2}, 
+\end{align*}
+ as well as
+\begin{align*}
+    C^{(2)}_{t} &:=  \frac{\sum_{i \leq t}\lambda_i \tilde C^{(2)}_{i}}{\sum_{i \leq t} \lambda_i}, 
+    \quad C^{(0)}_{t, \delta} := \frac{\sum_{i \leq t}\lambda_i \tilde C_{i, \delta}}{\sum_{i \leq t} \lambda_i},
+    \\ C^{(1)}_{t, \delta} &:= 1 +  \frac{\sum_{i \leq t}\lambda_i \tilde B_{i, \delta}}{\sum_{i \leq t} \lambda_i}
+\end{align*}
+(the numbers represent the degrees in the quadratic polynomial). Under this notation, we are ready to present Corollary~\ref{corollary:lower_bound}, a lower confidence sequence for the variance. Its proof has been deferred to Appendix~\ref{proof:lower_bound}.
+\begin{corollary} [Lower empirical Bernstein for the variance] \label{corollary:lower_bound}
+    Let Assumption~\ref{ass:main_assumption} hold. For $(\widehat\mu_i)_{i\geq1}$ defined as in \eqref{eq:widehat_mu_definition}, any $[0, 1]$-valued predictable sequence $(\widehat\sigma_i^2)_{i \geq 1}$, any $[0, 1)$-valued predictable sequence $(\lambda_i)_{i \geq 1}$, and any $[0, \infty)$-valued predictable sequence $(\tilde\lambda_i)_{i \geq 1}$, it holds that $\lp L_t, \infty\rp$ is a $1-\alpha$ lower confidence sequence for $\sigma^2$, 
+    where $\alpha_1 + \alpha_2 = \alpha$ and $L_t$ equals
+    \begin{align} \label{eq:lower_bound_process}
+        \frac{-C^{(1)}_{t, \alpha_1} + \sqrt{\lp C^{(1)}_{t, \alpha_1}\rp^2 + 4C^{(2)}_t(D_t - C^{(0)}_{t, \alpha_1} - R_{t, \alpha_2})}}{2C^{(2)}_t}.
+    \end{align}
+\end{corollary}
+
+It remains to discuss the choice of predictable plug-ins. Analogously to the upper inequality plug-ins, it would be natural to take $\lambda_{t,l, \alpha_2}^{\text{CS}} = \lambda_{t,u, \alpha_2}^{\text{CS}}$. However, the lower inequality includes the extra terms $\tilde R_{i, \alpha_1}$ that ought to be accounted for. Taking $\lambda_i > 0$ for $i$ such that $\tilde R_{i, \alpha_1} > 1$ would add a summand that is vacuous.\footnote{It would also be reasonable to take the minimum of $\tilde R_{i, \alpha_1}$ and $1$. We explore this alternative in Appendix~\ref{section:alternative_approaches}.} For this reason, we propose to take $\lambda_{t,l, \alpha_{2}}^{\text{CS}} := \lambda_{t,u, \alpha_{2}}^{\text{CS}}$ if $t \geq 2$ and $\frac{\log(2/\alpha_1) + \hat\sigma^2_{t} \sum_{i=1}^{t-1} \psi_P(\tilde \lambda_i)}{\sum_{i=1}^{t-1} \tilde \lambda_i} \leq 1$, and $\lambda_{t,l, \alpha_{2}}^{\text{CS}} := 0$ otherwise.
+
+Note that the threshold is only an approximation of $\tilde R_{i, \alpha_1}$, given that the latter is unknown in practice. Seeking a confidence sequence for $\mu$, we propose to take $(\tilde\lambda_i)_{i \geq 1}$ as 
+\begin{align} \label{eq:lambda_tilde_definition}
+    \tilde \lambda_t &:= \sqrt\frac{2\log(2/\alpha)}{\widehat \sigma_{t}^2 t \log (1+t)} \wedge c_5,
+\end{align}
+with $c_5$ being a constant in $(0,\infty)$, with a sensible default being $c_5 =2$. The choice of the split of $\alpha$ into $\alpha_1$ and $\alpha_2$ is also of importance. In the next section, we analyze specific splits for retrieving optimal asymptotical behavior. If having access to artificial samples similarly distributed to the random variables under study, the probability split can be optimized for using those observations as a reference. However, the split split $\alpha_1 = \alpha_2 = \frac{\alpha}{2}$ works generally well in practice. 
+
+
+
+
+\subsection{Upper and Lower Confidence Intervals} \label{section:ci}
+
+In the more classical batch setting, we observe a fixed number of observations $X_1, \ldots, X_n$, with $n$ known in advance. Given that confidence sequences are, in particular, confidence intervals for a fixed $t=n$, both Corollary~\ref{corollary:upper_bound} 
+and Corollary~\ref{corollary:lower_bound} immediately establish confidence intervals.  However, the choice of predictable plug-ins used in such corollaries should now be driven by minimizing the expected interval width  at a specific $t\equiv n$, rather than being tight uniformly over $t$. 
+
+For this reason, in order to optimize the upper confidence interval for a fixed $t \equiv n$, we take
+\begin{align} \label{eq:lambda_ci_definition_upper}
+    \lambda_{i, u, \alpha}^{\text{CI}} := \sqrt\frac{2\log(1/\alpha)}{\widehat m_{4, i}^2 n} \wedge c_1.
+\end{align}
+Following the same line of reasoning as in Section~\ref{section:lower_bound}, the plug-ins for the lower confidence intervals are defined as a slight modification of those for the upper confidence sequence. Accordingly, we take $\lambda_{t,l, \alpha_2}^{\text{CI}} := \lambda_{t,u, \alpha_2}^{\text{CI}}$ if $t \geq 2$ and $\frac{\log(2/\alpha_1) + \hat\sigma^2_{t} \sum_{i=1}^{t-1} \psi_P(\tilde \lambda_i)}{\sum_{i=1}^{t-1} \tilde \lambda_i} \leq 1$, and $\lambda_{t,l, \alpha_2}^{\text{CI}}$ otherwise. The remaining parameters and estimators are defined in the same manner as in the preceding sections.
+
+
+
+\subsubsection*{An Analysis of the Widths for the Variance} \label{section:analysis_widths}
+
+
+
+In order to draw comparisons with related inequalities, we analyze the asymptotic first order term of the novel confidence intervals for the variance.%\footnote{We show in Appendix~\ref{section:analysis_widths_std} that the confidence intervals for the std also achieve $1/\sqrt{n}$ rates.}
+ As emphasized in Section~\ref{section:introduction}, in the event of $(X_i-\mu)^2$ having constant conditional variance, the benchmark for the first order terms are those of oracle Bernstein confidence intervals, i.e. $\sqrt{2 \V \lb (X_i-\mu)^2\rb \log (1 / \alpha)}$. That is, we seek to prove that both $ \sqrt{n} (U_n - D_n)$ and $\sqrt{n} (D_n - L_n)$ converge almost surely to such quantity. Accordingly, we make the following assumption throughout. 
+\begin{assumption} \label{assumption:optimal_widths}
+ $X_1, X_2, \ldots$ is such that $\V_{i-1} \lb (X_i-\mu)^2\rb$ is constant across $i$.
+\end{assumption}
+
+We highlight that the concentration inequalities presented in this paper do not require Assumption~\ref{assumption:optimal_widths} to be valid. We only impose Assumption~\ref{assumption:optimal_widths} to compare the limiting width of our empirical inequalities to those of the oracle Bernstein inequality.
+
+We will implicitly also assume that the predictable sequences $(\widehat\mu_i)_{i \in [n]}$ and $(\widehat\sigma_i^2)_{i \in [n]}$ are defined as in Section~\ref{section:upper_bound} or Section~\ref{section:lower_bound}, with $c_2 \wedge c_3 > 0$.
+The condition $c_2 \wedge c_3 > 0$ is not necessary for the proofs to hold, but they follow cleaner with it. 
+
+For simplicity, we will focus on the asymptotic behavior of both 
+\begin{align*}
+    \sqrt{n} R_{n, \alpha}, \quad \sqrt{n} \lp \frac{\sum_{i \leq t}\lambda_{i, \alpha_{2, n}} \tilde R_{i, \alpha_{1, n}}^2}{\sum_{i \leq t} \lambda_{i, \alpha_{2, n}}} + R_{n, \alpha_{2, n}} \rp,
+\end{align*}
+where we define $\lambda_{i, \alpha_{2, n}} = \lambda_{t,u, \alpha_{2, n}}^{\text{CI}}$. These two quantities correspond to the first order widths of the upper and lower confidence intervals above and below the estimate $D_t$, respectively, if taking the plug-ins $\lambda_{i, \alpha_{2, n}}$.\footnote{Note that the plug-ins proposed in Section~\ref{section:ci} are slightly different (they may take the value $0$ for small enough $t$). However, the proofs can be easily extended to $\lambda_{t,l, \alpha_2}^{\text{CI}}$  after realizing that these two plug-ins are equal almost surely for big enough $t$; we believe the simplification is convenient for ease of presentation.} Note that, in contrast to the previous section, we emphasize the dependence of the split $\alpha = \alpha_{1, n} + \alpha_{2, n}$ on $n$, which we will exploit to recover optimal first order terms.
+
+
+
+We decouple the analysis in two parts, one involving the $R_i$'s and the other involving the $\tilde R_i$'s.  We start by establishing that the former converges almost surely to the oracle Bernstein first order term for the right choices of $\alpha_{2, n}$. The proof can be found in Appendix~\ref{proof:convergence_main_term}.
+
+
+\begin{theorem} \label{theorem:convergence_main_term}
+     Let $(\delta_n)_{n\geq1}$ be a deterministic sequence such that $\delta_{n} > 0$ and $\delta_{n} \nearrow  \delta > 0$. If Assumption~\ref{ass:main_assumption} and Assumption~\ref{assumption:optimal_widths} hold, then 
+    \begin{align*}
+        \sqrt{n} R_{n, \delta_{n}} \stackrel{a.s.}{\to} \sqrt{2 \V \lb (X_i-\mu)^2\rb \log (1/\delta)}.
+    \end{align*}
+\end{theorem}
+Second, we prove that the extra term that appears in the lower confidence interval converges to zero almost surely for right choices of $\alpha_{1, n}$. The proof can be found in Appendix~\ref{proof:lower_order_term}.
+\begin{theorem} \label{theorem:lower_order_term}
+    Let $\alpha = \alpha_{1, n} + \alpha_{2, n}$ be such that $\alpha_{1, n} =  \Omega \lp \frac{1}{\log(n)} \rp$ and $\alpha_{2, n} \to \alpha$. If Assumption~\ref{ass:main_assumption} and Assumption~\ref{assumption:optimal_widths} hold, then
+    \begin{align*}
+    \sqrt{n}\frac{\sum_{i \leq t}\lambda_{i, \alpha_{2, n}} \tilde R_{i, \alpha_{1,n}}^2}{\sum_{i \leq t} \lambda_{i, \alpha_{2, n}}} \stackrel{a.s.}{\to} 0.
+\end{align*}
+\end{theorem}
+
+Taking $\delta_n = \alpha$, it immediately follows from Theorem~\ref{theorem:convergence_main_term} that the upper confidence interval's first order term is asymptotically almost surely equal to that of the oracle Bernstein confidence interval. To derive the analogous conclusion for the lower confidence interval, it suffices to take
+\begin{align} \label{eq:final_def_alphas}
+    \alpha_{1, n} = \frac{1}{\log n}\alpha, \quad \delta_n = \alpha_{2, n} =  \frac{\log(n) - 1}{\log(n)} \alpha
+\end{align}
+in Theorem~\ref{theorem:lower_order_term} and Theorem~\ref{theorem:convergence_main_term}, respectively.  These claims are formalized in the following corollary.
+
+\begin{corollary} [Sharpness] \label{corollary:sharpness}
+Let the predictable sequences $(\widehat\mu_i)_{i \in [n]}$ and $(\widehat\sigma_i^2)_{i \in [n]}$ be defined as in Section~\ref{section:upper_bound} or Section~\ref{section:lower_bound}, with $c_2 \wedge c_3 > 0$. Let Assumption \ref{ass:main_assumption} and Assumption \ref{assumption:optimal_widths} hold. If $\alpha = \alpha_{1, n} + \alpha_{2, n}$ as defined in \eqref{eq:final_def_alphas}, then
+\begin{align*}
+    &\sqrt{n} (U_n - D_n) \stackrel{a.s.}{\to} \sqrt{2 \V \lb (X_i-\mu)^2\rb \log (1 / \alpha)},
+    \\&\sqrt{n} (D_n - L_n) \stackrel{a.s.}{\to} \sqrt{2 \V \lb (X_i-\mu)^2\rb \log (1 / \alpha)}.
+\end{align*}
+\end{corollary}
+
+
+
+
+
+
+
+
+
+% \subsubsection*{An analysis of the widths for the standard deviation} \label{section:analysis_widths_std}
+
+
+
+% We devote this section to showing that the confidence intervals for the std also achieve $1/\sqrt{n}$ rates. To see this, let $(L_n, U_n)$ be the confidence interval for the variance obtained in Section~\ref{section:main_results}. We just showed that, for big $n$,
+% \begin{align*}
+%     L_n \approx \sigma^2 - 2\sqrt{\frac{c \V \lb (X_i-\mu)^2\rb}{n}}, \quad U_n \approx \sigma^2 + 2\sqrt{\frac{c \V \lb (X_i-\mu)^2\rb}{n}}
+% \end{align*}
+% with $c = \frac{\log (1 / \alpha)}{2}$. At first glance, it could seem like $\sqrt{L_n}$ and $\sqrt{U_n}$ approach $\sigma$ at $n^{-1/4}$ rates, instead of $n^{-1/2}$ rates. Nonetheless, if $B \leq 1$, let us note that 
+% \begin{align*}
+%     \V \lb (X_i-\mu)^2\rb \leq \E\lb (X_i-\mu)^2\rb - \E^2\lb (X_i-\mu)^2\rb = \sigma^2(1 - \sigma^2) \leq \sigma^2.
+% \end{align*}
+% Thus,
+% \begin{align*}
+%    \sqrt U_n \lessapprox \sqrt{\sigma^2 + 2\sigma\sqrt{\frac{c}{n}}} = \sqrt{\lp\sigma + \sqrt{\frac{c}{n}}\rp^2 - {\frac{c}{n}}} \leq \sigma + \sqrt{\frac{c}{n}},
+% \end{align*}
+% and so $\sqrt U_n$ approaches $\sigma$ at a $n^{-1/2}$ rate. Analogously, $\sqrt L_n$ also approaches $\sigma$ at the same rate.
+
+
+\subsubsection*{Comparison to Existing Inequalities} \label{section:comparison}
+
+We compare our proposed inequalities to those in \citet{audibert2009exploration} and \citet{maurer2009empirical}. As mentioned in Section~\ref{section:related_work}, upper and lower inequalities for the variance were previously established in the work of \citet[Theorem 1]{audibert2009exploration} and \citet[Theorem 10]{maurer2009empirical}. Both these inequalities make use of $\mathbb{V} [ (X_i-\mu)^2 ] \leq \sigma^2$, directly or indirectly. While \citet[Theorem 1]{audibert2009exploration} makes direct use of it by leveraging Bernstein-type inequalities, \citet[Theorem 10]{maurer2009empirical} makes indirectly use of it through self-bounding arguments. \citet[Theorem 10]{maurer2009empirical}, which is the sharper of the two, yields the  $(1-\alpha)$-confidence interval
+$$\sigma \in \left(\sqrt{V_n} \pm \sqrt{\frac{2 \log (2 / \alpha)}{n-1}} \right),$$
+where $V_n$ is the empirical variance. That is,
+\begin{align*}
+    \sigma^2 \in \left(V_n +\frac{2 \log (2 / \alpha)}{n-1} \pm 2\sqrt{V_n\frac{2 \log (2 / \alpha)}{n-1}} \right).
+\end{align*}
+In view of $V_n \to \sigma^2$ almost surely, we observe that the radii of these two-sided confidence intervals scaled by $\sqrt n$ are roughly $$2\sigma\sqrt{2 \log (2 / \alpha)},$$
+which is larger the limiting first order width of our confidence intervals (Corollary~\ref{corollary:sharpness}) in view of $1 < 2$ and
+\begin{align*}
+    \V \lb (X_i-\mu)^2\rb &\leq \E\lb (X_i-\mu)^2\rb - \E^2\lb (X_i-\mu)^2\rb
+    \\&= \sigma^2(1 - \sigma^2) \leq \sigma^2.
+\end{align*}
+ 
+
+% If $B \leq 1$, which is usually assumed without loss of generality, we have shown in Section~\ref{section:ci} that our two-sided inequality radii scale at most as 
+% \begin{align*}
+%     \sqrt{\frac{c}{n}} = \sigma\sqrt{\frac{\log(2/\alpha)}{2n}},
+% \end{align*}
+% where we have also used the loose bound $\mathbb{V} \lb (X_i-\mu)^2\rb \leq \sigma^2$. Thus, our inequalities are sharper. 
+% This all follows from the radii of our two-sided inequalities for $\sigma^2$ scaling as
+% $$\sqrt{\mathbb{V} \lb (X_i-\mu)^2\rb } \sqrt{2 \log (2 / \alpha)/n},$$
+% as proven in Corollary~\ref{corollary:sharpness}.
+
+
+
+This theoretical edge also manifests in practice, with the empirical widths of our inequalities proving considerably smaller than those from \citet{maurer2009empirical}, as illustrated in Section~\ref{section:experiments}. Furthermore, it is unclear how to derive (anytime-valid) inequalities under martingale dependence using the tools from \citet[Theorem 10]{maurer2009empirical} (i.e., self-bounding  arguments), but we are able to do this with our proof techniques.
+
+
+% The recent contribution \citet[Theorem 12]{voravcek2025star} further establishes concentration inequalities for the second moment centered at any arbitrary point $m$.  However, that inequality is looser than \citet[Theorem 10]{maurer2009empirical} when we substitute $m=\mu$, which in turn we improve on as explained above.
+
+
+
+
+
+

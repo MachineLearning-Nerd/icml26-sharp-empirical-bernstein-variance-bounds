@@ -1,0 +1,72 @@
+
+\section{Introduction} \label{section:introduction}
+
+
+Providing finite-sample confidence intervals for the variance of a random variable is a fundamental problem in statistical inference, as variance quantifies the dispersion of data and directly influences uncertainty in decision-making. 
+% Confidence intervals offer a range within which the true variance is likely to lie, allowing for better interpretation of variability in data and providing more robust statistical conclusions.
+Exact confidence intervals are particularly important because approximate methods can lead to misleading inferences, especially when sample sizes are small, data distributions are skewed, or underlying assumptions are violated. 
+
+In particular, exact confidence intervals for the \textit{variance} play a central role in modern data-driven inference. Applications include multi-armed bandits \citep{audibert2009exploration}, off-policy evaluation \citep{thomas2015high} and  risk assessment \citep{huang2022off}, average treatment effect inference \citep{howard2021time} and  estimation \citep{neopane2025optimistic}, sample compression \citep{maurer2009empirical}, racing algorithms and boosting \citep{mnih2008empirical}, PAC-Bayes procedures \citep{tolstikhin2013pac}, and efficient confidence intervals \citep{austern2022efficient}, among others. However, the inferential tools that are provided for the variance in all these previous works can be sharpened. 
+
+
+%empirical Bernstein inequalities for the mean \citep{audibert2009exploration, maurer2009empirical}, which give way to a variety of applications including adaptive statistical learning \citep{mnih2008empirical}, high-confidence policy evaluation in reinforcement learning \citep{thomas2015high}, off-policy risk assessment \citep{huang2022off}, and inference for the average treatment effect \citep{howard2021time}. But in all these works, the focus was the mean, offering limited inferential tools for the variance (although several such contributions could benefit from a refined analysis of the variance).
+
+
+
+  
+
+
+
+This contribution centers on the study of the variance of bounded random variables. Assume for the moment that we observe $X_1, \ldots, X_n$, which are independent and identically distributed to $X$, which is a random variable taking values on $[0, 1]$ with mean $\mu$ and variance $\mathbb{V}(X)$.
+The primary goal of this work is to derive confidence intervals for $\V(X)$ that both well work in practice and are asymptotically equivalent to those derived from the oracle Bernstein inequality. More specifically, we seek fully empirical confidence intervals whose width's leading term matches that of the $[0,1]$-valued oracle Bernstein confidence interval for $\V(X)$. To recall, Bernstein's inequality for $\V(X)$ implies that $\mathbb{P}(\mathbb{V}(X) \in C_n) \geq 1 - \alpha$ with $C_n = [D_n - R_n, D_n + R_n]$, where $D_n$ is the center of the confidence interval and $R_n$ is the radius 
+\begin{align*}
+    R_n = \sqrt{\frac{2 \mathbb{V}[(X_i - \mu)^2] \log(2/\alpha)}{n}} + \frac{\log(2/\alpha)}{3n}.
+\end{align*}
+
+
+
+ 
+
+ The challenge in constructing the above interval in practice is that both $\mu$ and $2 \V \lb (X_i-\mu)^2\rb$ are unknown. 
+ A fully empirical confidence interval is called \textit{sharp} if its width asymptotically matches that of the first term above, including constants. To elaborate, when estimating the mean, Bernstein inequalities \citep{bernstein_theory_1927, bennett1962probability} are widely known for leading to closed-form, tight confidence intervals. However, their practicality is limited, as they require knowing a bound on the variance of the random variables (that is better than the trivial bound implied by the  bounds on the random variables). For this reason, they establish a natural ``oracle'' benchmark for fully empirical confidence sets that only exploit knowledge on the bound of the random variables. 
+
+
+
+Furthermore, some of the aforementioned applications rely on confidence sequences, which are anytime-valid counterparts of confidence intervals. A $(1-\alpha)$-confidence interval $C_{\text{CI}}$ for a target parameter $\theta$ is a random set  such that $P (\theta \in C_{\text{CI}}) \geq 1-\alpha$, where $C_{\text{CI}}$ is built after having observed a fixed number of observations. In contrast, $(C_{t})_{t\geq1}$ is a $(1-\alpha)$-confidence sequence if  $P (\forall t\geq 1: \theta \in C_{t}) \geq 1-\alpha$, with $t$ representing the number of observations collected sequentially. Confidence sequences are of key importance in online settings, where data is observed sequentially and probabilistic guarantees that hold at stopping times are often desired: confidence sequences allow for sequential procedures that are continuously monitored and adaptively adjusted. For instance, the optimal adaptive Neyman allocation in causal inference  \citep{neopane2025optimistic} is based on confidence sequences for the variance. %kato2020efficient, cook2024semiparametric, neopanelogarithmic provides a high-probability guarantee that the parameter $\theta$ is contained in the sequence at all time points with probability $1-\alpha$, i.e.,
+%for randomized control trials in the context of
+
+Variance confidence sequences are particularly valuable when uncertainty quantification must be performed sequentially and in a data-dependent manner. For instance, the optimal adaptive Neyman allocation in causal inference \citep{neopane2025optimistic} is based on confidence sequences for the variance. Similarly, in online learning and bandit problems, high-probability regret guarantees are often derived via concentration arguments, and sharp variance bounds enable tighter such conversions \citep{mnih2008empirical, audibert2009exploration}. Furthermore, in risk-sensitive decision-making, such as safe reinforcement learning or clinical trials \citep{kazerouni2017conservative, howard2021time}, sequential variance bounds allow practitioners to monitor and constrain risk in real time without relying on fixed horizons. More broadly, empirical Bernstein-type bounds play an important role in adaptive stopping rules, best-arm identification, and Monte Carlo estimation, where tighter variance estimates directly translate into improved sample efficiency. 
+
+%In these contexts, confidence sequences for the variance lead to sharper inference and more robust decision-making in sequential and data-dependent environments. %provide a flexible and nonasymptotic tool for quantifying second-order uncertainty, thereby enabling
+%controlling variability is as important as controlling the mean
+
+
+
+
+In many such online settings, the assumption that data points are independent and identically distributed (iid) is often too strong and unrealistic due to the dynamic and evolving nature of data streams. Unlike traditional offline analyses where data can be assumed to come from a fixed distribution, online environments involve sequentially arriving data that may exhibit temporal dependencies. Thus, we seek to develop concentration inequalities that only require the following assumption to hold (where $\E_t$ and $\V_t$ denote conditional expectations and variances, respectively; these definitions are later formalized in Section~\ref{section:background}).
+\begin{assumption} \label{ass:main_assumption}
+    The stream of random variables $X_1, X_2, \ldots$ is such that
+    \begin{align*}
+        X_t \in [0,1], \quad \E_{t-1} X_t = \mu, \quad \V_{t-1} X_t = \sigma^2.
+    \end{align*}
+\end{assumption}
+%Note that all (rescaled) iid bounded random variables attain Assumption~\ref{ass:main_assumption}. More generally,  Assumption~\ref{ass:main_assumption} is rather weak, avoiding assuming independence of the random variables. Any bounded random variable can be rescaled to belong to $[0,1]$, and so the first of the conditions can be assumed without loss of generality in the bounded setting. The conditional constant mean and variance are arguably the least we may assume if we wish to estimate ``the variance''. 
+
+Note that any bounded random variable can be rescaled to belong to $[0,1]$, and so the first of the conditions can be assumed without loss of generality in the bounded setting. Since boundedness is a prerequisite for existing empirical Bernstein inequalities concerning the mean, it is unavoidable here too. Other than boundedness,  Assumption~\ref{ass:main_assumption} remains substantially weak, replacing the traditional i.i.d. assumption with a broader martingale dependence structure. Furthermore, the conditional constant mean and variance are arguably the least we may assume if we wish to estimate "the variance". Since all bounded i.i.d. sequences can be rescaled to satisfy Assumption~\ref{ass:main_assumption}, our framework constitutes a strictly more general approach than the standard bounded i.i.d. assumptions prevalent in the literature. In particular, Assumption~\ref{ass:main_assumption} is attained in all aforementioned applications, with some of them  requiring i.i.d. data \citep{maurer2009empirical, austern2022efficient}, and others requiring only martingale dependence \citep{howard2021time, neopane2025optimistic}.
+
+
+
+We study the problem of providing confidence intervals and sequences for the variance of bounded random variables under Assumption~\ref{ass:main_assumption}. Our goal is to derive a fully data-dependent, nonasymptotically valid confidence interval for $\sigma^2$, without knowing either the mean or the fourth moment, while also being asymptotically as sharp as the oracle Bernstein bound that knows those quantities. That is, we want nonasymptotic validity and asymptotic sharpness for an explicit fully-data dependent confidence interval.
+% We provide a novel empirical Bernstein bound by modifying and combining (empirical) Bernstein bounds for the mean. 
+Our contributions are three-fold:
+\begin{itemize}
+    \item We provide novel confidence sequences for the variance (Corollary~\ref{corollary:upper_bound} and Corollary~\ref{corollary:lower_bound}), that are derived from novel supermartingale constructions (Theorem~\ref{theorem:main_supermartingale_theorem} and Corollary~\ref{corollary:main_corollary}). We instantiate the results for the sequential setting in Section~\ref{section:upper_bound} and Section~\ref{section:lower_bound}, and for the batch setting (where the confidence sequence reduces to a confidence interval) in Section~\ref{section:ci}. Confidence sequences for the standard deviation (std) $\sigma$ can also be immediately derived by taking the square root of the confidence sequences for the variance.
+    \item Theoretically, we prove the sharpness of our inequalities by showing that the first order term of the novel confidence interval exactly matches that of the oracle Bernstein inequality (Corollary~\ref{corollary:sharpness}).
+    \item Empirically, we illustrate how our proposed inequalities substantially outperform those of \citet[Theorem 10]{maurer2009empirical} in Section~\ref{section:experiments}, which constitute the existing sharpest inequalities for the standard deviation, to the best of our knowledge. We further illustrate how our confidence sequences improve the adaptive Neyman allocation procedure from \citet{neopane2025optimistic}, which requires anytime-valid inference for the variance of the potential outcomes, but used inferior ones to ours.
+\end{itemize}
+  
+
+
+
+
+%\paragraph{Paper outline.} We present related work in Section~\ref{section:related_work}, followed by preliminaries in Section~\ref{section:background}. Section~\ref{section:main_results} exhibits the main results of this contribution, namely an empirical Bernstein inequality for the variance. Section~\ref{section:experiments} displays experimental results, showing how our proposed inequalities outperform existing alternatives. We conclude with some remarks in Section~\ref{section:conclusion}.

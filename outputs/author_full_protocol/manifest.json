@@ -1,0 +1,21 @@
+{
+  "paper": "oqkiE71wrC",
+  "source_repository": "https://github.com/DMartinezT/emp_bernstein_variance.git",
+  "commit": "e36d2d779e04d52604337ca093071a1f3051f129",
+  "entrypoint": "main.py",
+  "protocol": "unmodified author source; n_experiments=100; sample_size_list=arange(100,5000,100); distributions=uniform,beta(2,6),beta(5,5)",
+  "files": {
+    "beta.npy": {
+      "bytes": 470528,
+      "sha256": "6292b1f0207441664391bfcba35e14a33f96de0a4805ddca77240ae9d9ef02fd"
+    },
+    "beta1.npy": {
+      "bytes": 470528,
+      "sha256": "94165af1b0901d777dd31f53af55af32169e6bfc53002687051dd03a1eb18659"
+    },
+    "uniform.npy": {
+      "bytes": 470528,
+      "sha256": "08f89eef203913e79f5967dab2d9588f655a1fdb73302cdd542f60f21bb3b0e4"
+    }
+  }
+}

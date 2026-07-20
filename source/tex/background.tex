@@ -1,0 +1,31 @@
+\section{Background} \label{section:background}
+
+Let us start by presenting the concepts of \textit{filtration} and \textit{supermartingale}, which will be heavily exploited in this work to go beyond the iid setting. Consider a filtered measurable space $(\Omega,\F)$, where the filtration $\F = (\F_t)_{t \geq 0}$ is a sequence of $\sigma$-algebras such that $\F_t \subseteq \F_{t+1}$, $t \geq 0$. The canonical filtration $\F_t = \sigma(X_1, \ldots, X_t)$, with $\F_0$ being trivial, is considered throughout. A stochastic process $M \equiv (M_t)_{t \geq 0}$ is a sequence of random variables that are adapted to $(\F_t)_{t \geq 0}$, i.e., $M_t$ is $\F_{t}$-measurable for all $t$.  $M$ is called \emph{predictable} if $M_t$ is $\F_{t-1}$-measurable for all $t$. An integrable stochastic process $M$ is a supermartingale if $\E[M_{t+1}| \F_t] \leq M_t$ for all $t$.  We use  $\E_{t}[\cdot]$ and $\V_{t}[\cdot]$ in short for $\E[\cdot | \F_t]$ and $\V[\cdot | \F_t]$, respectively. Inequalities between random variables are always interpreted to hold almost surely. 
+
+As exhibited in later sections, our concentration inequalities will be derived as Chernoff inequalities. In contrast to more classical inequalities, our results come with anytime validity (that is, they hold at any stopping time), derived using the following anytime-valid version of Markov's inequality. 
+\begin{theorem} [Ville's inequality] \label{theorem:villesinequality}
+    For any nonnegative supermartingale $(M_t)_{t \geq 0}$ and $x > 0$,
+    \begin{align*}
+        \Pb \lp \exists t \geq 0: M_t \geq x\rp \leq \frac{\E M_0}{x}.
+    \end{align*}
+\end{theorem}
+Powerful nonnegative supermartingale constructions are usually at the heart of anytime valid concentration inequalities. For example, the following sharp empirical Bernstein inequality from \citet{howard2021time} and \citet{waudby2024estimating} is derived from a nonnegative supermartingale.
+
+\begin{theorem}[Empirical Bernstein inequality] \label{theorem:empirical_bernstein_ian}
+Let $X_1, X_2, \ldots$ be a stream of random variables such that, for all $t \geq 1$, it holds that $X_t \in [0, 1]$ and $\E_{t-1}X_t = \mu$. Let $\psi_E(\lambda) = -\log\lambda - \lambda$. For any $[0,1)$-valued predictable sequence $(\lambda_i)_{i \geq 1}$ such that $\lambda_1 > 0$, it holds that
+    \begin{align*}
+    \lp \frac{\sum_{i = 1}^n \lambda_i X_i}{\sum_{i = 1}^n \lambda_i} \pm  \frac{\log\lp\frac{2}{\delta}\rp + \sum_{i = 1}^n \psi_E(\lambda_i)  \lp X_i - \hat\mu_{i-1} \rp^2}{\sum_{i = 1}^n \lambda_i}\rp
+\end{align*}
+is a $1-\delta$ confidence sequence for $\mu$.
+\end{theorem}
+
+ We will modify Theorem~\ref{theorem:empirical_bernstein_ian}  in later sections in order to derive our results. The sequence $(\lambda_i)_{i \geq 1}$ is referred to as `predictable plug-ins'. They play the role of the parameter $\lambda$ that naturally appears in all the Chernoff inequality derivations; nevertheless, instead of they being equal for each $i$ and theoretically optimized, they are empirically and sequentially chosen. The choice of the predictable plug-ins is key in the performance of the inequalities, and will be discussed throughout our work.  Besides making use of predictable plug-ins in empirical Bernstein-type supermartingales, we will also exploit them in the following anytime valid version of Bennett's inequality.
+\begin{theorem} [Anytime valid Bennett's inequality] \label{theorem:bennett_anytimevalid}
+    Let $X_1, X_2, \ldots$ be a stream of random variables such that, for all $t \geq 1$, it holds that $X_t \in [0, 1]$, $\E_{t-1}X_t = \mu$, and $\V_{t-1} X_t = \sigma^2$. Let $\psi_P(\lambda) = \exp(\lambda) - \lambda - 1$. For any $\R_+$-valued predictable sequence $(\tilde\lambda_i)_{i \geq 1}$, it holds that
+     \begin{align*}
+         \lp \frac{\sum_{i \leq t} \tilde \lambda_i X_i}{\sum_{i \leq t} \tilde \lambda_i} \pm \frac{\log(2/\delta) + \sigma^2\sum_{i \leq t} \psi_P(\tilde \lambda_i)}{\sum_{i \leq t} \tilde \lambda_i} \rp
+     \end{align*}
+     is a $1-\delta$ confidence sequence for $\mu$.
+\end{theorem}
+While this result is technically novel (and so we present a proof in Appendix~\ref{proof:bennett_anytimevalid}), it can be derived using the techniques in~\cite{howard2020time,waudby2024estimating}. It would generally lack any practical use, given that $\sigma$ is typically unknown. Nonetheless, we will invoke it in combination with an empirical Bernstein inequality for $\sigma^2$, thus making it actionable.  
+

@@ -1,0 +1,129 @@
+{
+  "artifact_manifest": {
+    "commit": "e36d2d779e04d52604337ca093071a1f3051f129",
+    "entrypoint": "main.py",
+    "files": {
+      "beta.npy": {
+        "bytes": 470528,
+        "sha256": "6292b1f0207441664391bfcba35e14a33f96de0a4805ddca77240ae9d9ef02fd"
+      },
+      "beta1.npy": {
+        "bytes": 470528,
+        "sha256": "94165af1b0901d777dd31f53af55af32169e6bfc53002687051dd03a1eb18659"
+      },
+      "uniform.npy": {
+        "bytes": 470528,
+        "sha256": "08f89eef203913e79f5967dab2d9588f655a1fdb73302cdd542f60f21bb3b0e4"
+      }
+    },
+    "paper": "oqkiE71wrC",
+    "protocol": "unmodified author source; n_experiments=100; sample_size_list=arange(100,5000,100); distributions=uniform,beta(2,6),beta(5,5)",
+    "source_repository": "https://github.com/DMartinezT/emp_bernstein_variance.git"
+  },
+  "disclosure": "The source simulation is descriptive evidence, not a universal-coverage proof. Non-finite comparator values are retained and reported rather than filtered.",
+  "distributions": {
+    "beta.npy": {
+      "cells": 4900,
+      "coverage": {
+        "empirical_bernstein": 0.9997959183673469,
+        "empirical_bernstein_bennett_lower_hybrid": 0.9997959183673469,
+        "maurer_pontil": 1.0
+      },
+      "decoupled_comparator_nonfinite_fraction_columns_9_to_11": 0.3889795918367347,
+      "empirical_bernstein_width_vs_maurer_pontil": {
+        "cell_tie_fraction": 0.0,
+        "cell_win_fraction": 1.0,
+        "mean_ratio": 0.41105955083849033
+      },
+      "finite_fraction_proposed_columns_3_to_8": 1.0,
+      "mean_interval_width": {
+        "empirical_bernstein": 0.05071488399115052,
+        "empirical_bernstein_bennett_lower_hybrid": 0.05592082940759499,
+        "maurer_pontil": 0.12337600206028769
+      },
+      "median_interval_width": {
+        "empirical_bernstein": 0.02593446599680395,
+        "empirical_bernstein_bennett_lower_hybrid": 0.028186593163065064,
+        "maurer_pontil": 0.09792946107842937
+      },
+      "shape": [
+        100,
+        49,
+        12
+      ],
+      "true_standard_deviation": 0.14433756729740643
+    },
+    "beta1.npy": {
+      "cells": 4900,
+      "coverage": {
+        "empirical_bernstein": 1.0,
+        "empirical_bernstein_bennett_lower_hybrid": 1.0,
+        "maurer_pontil": 1.0
+      },
+      "decoupled_comparator_nonfinite_fraction_columns_9_to_11": 0.47217687074829934,
+      "empirical_bernstein_width_vs_maurer_pontil": {
+        "cell_tie_fraction": 0.0,
+        "cell_win_fraction": 1.0,
+        "mean_ratio": 0.3984598563514911
+      },
+      "finite_fraction_proposed_columns_3_to_8": 1.0,
+      "mean_interval_width": {
+        "empirical_bernstein": 0.04927626015330395,
+        "empirical_bernstein_bennett_lower_hybrid": 0.05376418037787066,
+        "maurer_pontil": 0.12366681202092329
+      },
+      "median_interval_width": {
+        "empirical_bernstein": 0.0250535546957672,
+        "empirical_bernstein_bennett_lower_hybrid": 0.02666611770138,
+        "maurer_pontil": 0.09792946107842937
+      },
+      "shape": [
+        100,
+        49,
+        12
+      ],
+      "true_standard_deviation": 0.15075567228888181
+    },
+    "uniform.npy": {
+      "cells": 4900,
+      "coverage": {
+        "empirical_bernstein": 0.9993877551020408,
+        "empirical_bernstein_bennett_lower_hybrid": 0.9993877551020408,
+        "maurer_pontil": 1.0
+      },
+      "decoupled_comparator_nonfinite_fraction_columns_9_to_11": 0.36959183673469387,
+      "empirical_bernstein_width_vs_maurer_pontil": {
+        "cell_tie_fraction": 0.0,
+        "cell_win_fraction": 1.0,
+        "mean_ratio": 0.336008674986558
+      },
+      "finite_fraction_proposed_columns_3_to_8": 1.0,
+      "mean_interval_width": {
+        "empirical_bernstein": 0.04237417221676187,
+        "empirical_bernstein_bennett_lower_hybrid": 0.04540197673155277,
+        "maurer_pontil": 0.12611035181891372
+      },
+      "median_interval_width": {
+        "empirical_bernstein": 0.02447935671721649,
+        "empirical_bernstein_bennett_lower_hybrid": 0.025235935338145665,
+        "maurer_pontil": 0.09792946107842937
+      },
+      "shape": [
+        100,
+        49,
+        12
+      ],
+      "true_standard_deviation": 0.2886751345948129
+    }
+  },
+  "method_columns": {
+    "0_to_2": "Maurer-Pontil upper, center, lower standard-deviation interval",
+    "3_to_6": "released empirical-Bernstein upper, center, lower, center",
+    "7_to_8": "released empirical-Bernstein-Bennett lower and center",
+    "9_to_11": "released decoupled comparator upper, center, lower"
+  },
+  "paper": "oqkiE71wrC",
+  "protocol": "unmodified pinned author main.py: three distributions x 100 trials x 49 sample sizes",
+  "source_commit": "e36d2d779e04d52604337ca093071a1f3051f129",
+  "status": "passed_artifact_integrity_and_descriptive_audit"
+}

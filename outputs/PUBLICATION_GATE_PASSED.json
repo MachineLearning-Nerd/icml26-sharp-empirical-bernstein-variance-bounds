@@ -1,0 +1,36 @@
+{
+  "claim_count": 3,
+  "claim_outcomes": {
+    "claim_1_constant_conditional_moments": {
+      "cells": 3800,
+      "max_supermartingale_multiplier": "1.0",
+      "negative_control_omitted_mean_error_multiplier": "1.11174853238868829",
+      "outcome": "passed",
+      "scope": "all 3,800 high-precision conditional multiplier cells for two adaptive-switchable bounded laws with fixed conditional mean and variance"
+    },
+    "claim_2_iid_asymptotic_sharpness": {
+      "cells": 36,
+      "max_relative_error_across_all_finite_horizons": "0.25972734349275493",
+      "max_relative_error_at_n_1e10": "0.000161917862887044265",
+      "negative_control_wrong_quadratic_psi_ratio": "1.5",
+      "outcome": "passed",
+      "scope": "first-order radius optimization for three fourth-moment variances, three confidence levels, and four large fixed horizons"
+    },
+    "claim_3_separable_hilbert_extension": {
+      "cells": 960,
+      "max_supermartingale_multiplier": "1.0",
+      "negative_control_omitted_vector_mean_error_multiplier": "1.03096527010360196",
+      "outcome": "passed",
+      "scope": "all 960 high-precision non-collinear finite-dimensional Hilbert-space multiplier cells"
+    }
+  },
+  "disclosure": "The complete released simulation is audited as full-scale descriptive evidence. The universal claims are supported independently by exact high-precision finite-law certificates and a separate asymptotic optimization check.",
+  "full_scale_author_artifact_analysis": "outputs/author_full_analysis.json",
+  "full_scale_protocol": "unmodified pinned author main.py: three distributions x 100 trials x 49 sample sizes",
+  "independent_certificate": "outputs/independent_certificate.json",
+  "paper": "oqkiE71wrC",
+  "publication_gate_passed": true,
+  "tests": "4 unittest cases passed",
+  "tests_passed": true,
+  "title": "Sharp Empirical Bernstein Inequalities for the Variance of Bounded Random Variables"
+}
