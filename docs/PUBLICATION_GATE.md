@@ -12,6 +12,6 @@ The evidence-release gate is **PASSED**. The overall release is **VERIFIED_SCOPE
 | Negative controls | Scalar, sharpness, vector, and malformed-shape controls | pass |
 | Local tests | Four unittest cases | pass |
 | Provenance disclosure | Author simulation separated from independent certificate | pass |
-| Public handoff | Final repository metadata, branch, and attribution readback | pending final publication step |
+| Public handoff | Final repository metadata, branch, and attribution readback | pass |
 
 Observed coverage and width comparisons are descriptive evidence only. Non-finite comparator entries and the finite sharpness discrepancy remain visible in the output artifacts.
