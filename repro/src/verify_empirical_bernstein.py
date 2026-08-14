@@ -231,7 +231,7 @@ def main() -> None:
     arguments = parser.parse_args()
     result = {
         "paper": "oqkiE71wrC",
-        "title": "Sharp Empirical Bernstein Inequalities for the Variance of Bounded Random Variables",
+        "title": "Sharp Empirical Bernstein Bounds for the Variance of Bounded Random Variables",
         "source_manifest": source_manifest(),
         "claim_outcomes": {
             "claim_1_constant_conditional_moments": scalar_supermartingale_claim(),
